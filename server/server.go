@@ -13,7 +13,11 @@ type Server struct {
 
 // All routes are registered here
 func (s *Server) RegisterRoutes() {
-	// s.Router.Handle("/public", http.FileServer(http.Dir("public")))
+
+	fs := http.FileServer(http.Dir("public"))
+
+	fs2 := http.StripPrefix("/public/", fs)
+	s.Router.Handle("/public/", fs2)
 	s.Router.HandleFunc("GET /index", routes.Index)
 	s.Router.HandleFunc("GET /about", routes.About)
 	s.Router.HandleFunc("GET /services", routes.Services)

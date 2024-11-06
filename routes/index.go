@@ -19,7 +19,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	data := IndexData{
 		Title: "Home--CTSDA",
-		Body:  "inside the body",
+		Body:  "dummy somethennnng",
 	}
 
 	if err = tmpl.ExecuteTemplate(w, "base.html", &data); err != nil {
