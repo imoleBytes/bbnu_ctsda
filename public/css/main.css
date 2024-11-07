@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 
+
+#m-menu div, #m-menu li{
+    margin: 20px;
+}
