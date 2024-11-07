@@ -2,8 +2,8 @@
 <header>
     
     <div class="top bg-whitesmoke text-darkwhitesmoke py-2">
-        <div class="top-wrapper w-11/12 sm:w-4/5 m-auto md:flex justify-between">
-            <div class="contact-date flex flex-wrap justify-center gap-1 ">
+        <div class="top-wrapper w-11/12 md:w-3/5 m-auto md:flex justify-between">
+            <div class="contact-date flex flex-wrap items-center justify-center gap-1 ">
                 <div class="border-l-darkwhitesmoke border-l-2 px-1"><i class="fa-solid fa-phone"></i><span>+149 75 23 222 35</span></div>
                 <div class="border-l-darkwhitesmoke border-l-2 px-1"><i class="fa-solid fa-envelope"></i><span>renovate@mail.com</span></div>
                 <div class="border-l-darkwhitesmoke border-l-2 px-1"><i class="fa-solid fa-clock"></i><span>Mon - Fri: 08.00 - 17.00</span></div>
@@ -14,20 +14,31 @@
                 <i class="fa-brands fa-linkedin-in"></i>
             </div>
         </div>
-        
     </div>
     
-    <nav>
+    <nav class="flex bg-red-100 items-center justify-between w-11/12 md:w-3/5 m-auto">
         <div class="logo">
             <h1 class="">CTSDA</h1>
         </div>
-        <ul>
+
+        <ul class="hidden sm:flex gap-5">
             <li><a href="/index">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/services">Services</a></li>
             <li><a href="/contact">Contact Us</a></li>
             <li><a href="/dashboard">Dashboard</a></li>
         </ul>
+        <ul class="mobile-menu hidden">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+        </ul>
+        <div class="toggle-icons sm:hidden">
+            <i class="fa-solid fa-bars "></i>
+            <i class="fa-solid fa-xmark"></i>
+        </div>
     </nav>
 </header>
 {{end}}
