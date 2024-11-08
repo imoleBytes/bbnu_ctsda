@@ -1,5 +1,5 @@
 {{define "headerFragment"}}
-<header class="shadow-md">
+<header id="header" class="shadow-md">
     
     <div class="top bg-whitesmoke text-darkwhitesmoke py-2">
         <div class="top-wrapper w-11/12 md:w-3/5 m-auto md:flex justify-between">
@@ -30,7 +30,7 @@
         </ul>        
         <div id="hbar" class="text-3xl sm:hidden" onclick="handleMenu()"><i class="fa-solid fa-bars"></i></div>        
     </nav>
-    <ul id="m-menu" class="hidden absolute bg-slate-400 w-full h-4/5 opacity-95 text-center text-3xl text-white py-10">
+    <ul id="m-menu" class="hidden absolute z-10 bg-slate-400 w-full h-4/5 opacity-95 text-center text-3xl text-white py-10">
         <div id="xbar" class="hidden" onclick="handleMenu()"><i class="fa-solid fa-xmark"></i></div>
         <li><a href="/index">Home</a></li>
         <li><a href="/about">About</a></li>

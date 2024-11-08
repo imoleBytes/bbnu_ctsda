@@ -3,6 +3,33 @@
 @tailwind utilities;
 
 
+:root{
+    --header-height: 0px;
+    /* --backgroundImg: ; */
+}
+
+
+#hero{
+    position: relative;
+    background-image: url("/public/img/engineers.jpeg");
+    transition: background-image 1s ease-in-out;
+}
+#hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for desired darkness */
+    z-index: 1;
+}
+
+/* Style for content to sit on top of overlay */
+#hero > * {
+    position: relative;
+    z-index: 2;
+}
 
 #m-menu div, #m-menu li{
     margin: 20px;
