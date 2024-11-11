@@ -576,6 +576,11 @@ video {
   margin-right: auto;
 }
 
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -584,10 +589,6 @@ video {
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-}
-
-.mt-5 {
-  margin-top: 1.25rem;
 }
 
 .ml-5 {
@@ -695,17 +696,8 @@ video {
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
 
-.bg-button-color {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 52 51 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
-}
-
-.bg-\[url\(\'\/public\/img\/engineers\.jpeg\'\)\] {
-  background-image: url('/public/img/engineers.jpeg');
 }
 
 .bg-cover {
@@ -771,14 +763,14 @@ video {
   line-height: 2.25rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -798,11 +790,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-button-color {
-  --tw-text-opacity: 1;
-  color: rgb(220 52 51 / var(--tw-text-opacity));
 }
 
 .opacity-95 {
@@ -853,16 +840,6 @@ video {
 
 #m-menu div, #m-menu li{
   margin: 20px;
-}
-
-.hover\:bg-logo-color:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(237 195 41 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-\[\#b8860b\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(184 134 11 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-\[\#fcc205\]:hover {
