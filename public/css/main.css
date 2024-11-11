@@ -34,3 +34,62 @@
 #m-menu div, #m-menu li{
     margin: 20px;
 }
+
+@keyframes slide{
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.logos{
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+.logos::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to left,rgba(255,255,255, 0), white);
+    z-index: 2;
+}
+.logos::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to right,rgba(255,255,255, 0), white);
+    z-index: 2;
+}
+.logos:hover .logo-slide{
+    animation-play-state: paused;
+}
+.logo-slide{
+    display: inline-block;
+    animation: 10s slide infinite linear;
+    margin:0 5rem;
+}
+
+.logo-slide img {
+    width: 70px;
+    height: 50px;
+    margin: 0 5rem;
+    display: inline-block;
+}
+@media screen and (max-width:475px) {
+    .logo-slide img{
+        width: 50px;
+        margin: 0 2rem;
+        animation: 2s slide infinite linear;
+
+    }    
+}
+
