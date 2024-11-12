@@ -23,6 +23,9 @@ func (s *Server) RegisterRoutes() {
 	s.Router.HandleFunc("GET /services", routes.Services)
 	s.Router.HandleFunc("GET /contact", routes.Contact)
 	s.Router.HandleFunc("GET /dashboard", routes.Dashboard)
+
+	s.Router.HandleFunc("GET /network", routes.Network)
+
 }
 
 func NewServer() Server {
