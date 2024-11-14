@@ -1,0 +1,29 @@
+{{define "content"}}
+<main id="hero" class="bg-no-repeat bg-cover bg-fixed]">
+    <!-- <div class="w-3/5 mx-auto">
+        <img class="max-md:w-full mx-auto" src="/public/img/logo.svg" alt="">
+    </div> -->
+    <div class="w-11/12 md:w-3/5 mx-auto">
+        <div class="content bg-black bg-opacity-80 text-white px-5 py-10">
+            <h2 class="font-bold text-2xl pb-5 border-b border-b-logo-color">
+                Verify Certificate
+            </h2>
+            <p class="py-5 text-center">
+If you have a certificate issued by ACTD and would like to verify the authenticity of its issuance by ACTD .
+ Enter here the verification code written on the certificate.
+            </p>
+
+            <form class="p-5 w-max m-auto" action="/verify-cert" method="post">
+                <input class="uppercase text-center px-5 py-2 font-black text-black" type="text" name="code" id="" placeholder="Verification Code">
+            </form>
+
+            <div>
+                <h3>{{.}}</h3>
+            </div>
+
+            
+        </div>
+        
+    </div>    
+</main>    
+{{end}}

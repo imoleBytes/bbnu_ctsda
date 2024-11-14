@@ -20,7 +20,7 @@ func SingleNetwork(w http.ResponseWriter, r *http.Request) {
 	tag := r.PathValue("tag")
 	fmt.Println("Tag is: " + tag)
 
-	// get a single institue
+	// get a single institue using the tag value
 
 	// then render it
 	tmpl.ExecuteTemplate(w, "base.html", nil)

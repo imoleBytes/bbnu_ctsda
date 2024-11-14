@@ -19,7 +19,10 @@ func (s *Server) RegisterRoutes() {
 	fs2 := http.StripPrefix("/public/", fs)
 	s.Router.Handle("/public/", fs2)
 
-	s.Router.HandleFunc("/", routes.Index)
+	s.Router.HandleFunc("GET /index/", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/index", http.StatusMovedPermanently)
+	})
+	s.Router.HandleFunc("GET /index", routes.Index)
 
 	s.Router.HandleFunc("GET /about", routes.About)
 	s.Router.HandleFunc("GET /services", routes.Services)
@@ -28,6 +31,9 @@ func (s *Server) RegisterRoutes() {
 
 	s.Router.HandleFunc("GET /network", routes.Network)
 	s.Router.HandleFunc("GET /network/{tag}", routes.SingleNetwork)
+
+	s.Router.HandleFunc("GET /verify-cert", routes.VerifyCert)
+	s.Router.HandleFunc("POST /verify-cert", routes.PostVerifyCert)
 
 }
 
