@@ -40,3 +40,24 @@ function changeBackground() {
 }
 
 setInterval(changeBackground, 3000)
+
+
+// function handleVerify(e) {
+//     e.preventDefault()
+//     console.log("front hit")
+//     const formData = new FormData(e.target)
+//     const code = formData.get("code")
+
+//     console.log(code)
+
+//     fetch("localhost:5000/verify-cert", {
+//         method: "POST",
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: formData
+//     })
+//     .then(response => response.json())
+//     .then(data=>console.log(data))
+//     .catch(err=>console.log(err))
+// }

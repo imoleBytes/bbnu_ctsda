@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func VerifyCert(w http.ResponseWriter, r *http.Request) {
@@ -25,7 +26,8 @@ func VerifyCert(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostVerifyCert(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("templates/base.html", "templates/verify.html", "templates/header.html", "templates/footer.html")
+	fmt.Println("hit")
+	tmpl, err := template.ParseFiles("templates/fragments/verifyResults.html")
 	// tmpl, err := template.ParseGlob("templates/about.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -43,11 +45,16 @@ func PostVerifyCert(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	code := r.PostFormValue("code")
+	code = strings.ToLower(code)
+
+	// if code == "kolo123" {
+
+	// }
 	data := IndexData{
-		Title: "Verify--CTSDA",
-		Body:  "different content: " + code,
+		Body: code,
 	}
 
 	fmt.Println("code is: " + code)
-	tmpl.ExecuteTemplate(w, "base.html", data)
+	tmpl.Execute(w, data)
+	// tmpl.ExecuteTemplate(w, "base.html", data)
 }

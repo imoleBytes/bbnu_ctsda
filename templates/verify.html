@@ -9,19 +9,15 @@
                 Verify Certificate
             </h2>
             <p class="py-5 text-center">
-If you have a certificate issued by ACTD and would like to verify the authenticity of its issuance by ACTD .
- Enter here the verification code written on the certificate.
+                If you have a certificate issued by ACTD and would like to verify the authenticity of its issuance by ACTD .
+                Enter here the verification code written on the certificate.
             </p>
 
-            <form class="p-5 w-max m-auto" action="/verify-cert" method="post">
-                <input class="uppercase text-center px-5 py-2 font-black text-black" type="text" name="code" id="" placeholder="Verification Code">
+            <!-- <form class="p-5 w-max m-auto" action="/verify-cert" method="post"> -->
+            <form class="p-5 w-max m-auto" hx-post="/verify-cert" hx-target="#result">
+                <input class="uppercase text-center px-5 py-2 font-black text-black" type="text" name="code" id="verify" placeholder="Verification Code" value="{{.}}">
             </form>
-
-            <div>
-                <h3>{{.}}</h3>
-            </div>
-
-            
+            <div id="result"></div>
         </div>
         
     </div>    

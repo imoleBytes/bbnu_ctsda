@@ -1,0 +1,36 @@
+
+
+
+{{if eq .Body "kolo123"}}
+<form action="" class="grid text-xl">
+    <label class="m-2" for="">Verification code : <input type="text" id="vcode" class="bg-gray-400" readonly></label>
+    
+
+    <label class="m-2" for="">Establishment Name : <input type="text" class="bg-gray-400" readonly></label>
+    
+    <label class="m-2" for="">Country of registration : <input type="text" class="bg-gray-400" readonly></label>
+    
+
+    <label class="m-2" for="">Validity of accreditation : <input type="text" class="bg-gray-400" readonly></label>
+    
+
+    <label class="m-2" for="">Name : <input type="text" class="bg-gray-400" readonly></label>
+    
+
+    <label class="m-2" for="">Nationality : <input type="text" class="bg-gray-400" readonly></label>
+    
+
+    <label class="m-2" for="">Field of specialization : <input type="text" class="bg-gray-400" readonly></label>
+    
+
+    <label class="m-2" for="">Website : <input type="text" class="bg-gray-400" readonly></label>
+    
+
+    <label class="m-2" for="">Program Name : <input type="text" class="bg-gray-400" readonly></label>
+    
+
+    <label class="m-2" for="">Status : <input type="text" class="bg-gray-400" readonly></label>                    
+</form>
+{{else}}
+<h2>No result for {{.Body}}</h2>
+{{end}}
