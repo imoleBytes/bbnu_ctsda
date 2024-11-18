@@ -1,0 +1,77 @@
+{{define "content"}}
+<main id="hero" class="bg-no-repeat bg-cover bg-fixed]">
+    <div class="w-11/12 md:w-3/5 mx-auto flex h-full ">
+        <div class="content w-full bg-black bg-opacity-80 text-white px-5 py-10">
+            <h2 class="mb-5 font-bold text-2xl pb-5 border-b border-b-logo-color">
+                Application Starts Here
+            </h2>
+
+            <div class="my-10 gap-5">
+
+                <form id="start-form" action="#" method="post" class="text-xl md:w-4/5 m-auto border border-solid border-green-50 p-2">
+                    <div class="form-section">
+                        <label class="block" for="fname">First Name:</label>
+                        <input class="block w-full mb-5 text-gray-800" type="text" id="fname" name="firstname" required>
+
+                        <label class="block" for="lname">Last Name:</label>
+                        <input class="block w-full mb-5 text-gray-800" type="text" id="lname" name="lastname" required>
+
+                        <label class="block" for="institute">Your institute name ( Or Company name ):</label>
+                        <input class="block w-full mb-5 text-gray-800" type="text" id="institute" name="institute" required>
+
+                        <label class="block" for="operate-in-country">In which country does your institute operate and work?</label>
+                        <input class="block w-full mb-5 text-gray-800" type="country" id="operate-in-country" name="operateCountry" required>
+
+                        <label class="block" for="email">Email:</label>
+                        <input class="block w-full mb-5 text-gray-800" type="email" id="email" name="email" required>
+                        
+                        <label class="block" for="phone">Mobile phone number ( with WhatsApp):</label>
+                        <input class="block w-full mb-5 text-gray-800" type="tel" id="phone" name="phone" required>
+
+                        <label class="block" for="register-in-country">In which country is your institution registered?</label>
+                        <select class="block w-full mb-5 text-gray-800" id="register-in-country" name="registerCountry" required>
+                            <option value="">Select an option</option>
+                            <option value="nigeria">Nigeria</option>
+                            <option value="benin">Benin</option>
+                            <option value="usa">USA</option>
+                            <option value="germany">Germany</option>
+                            <option value="ghabon">Gabon</option>
+                            <option value="ghana">Ghana</option>
+                            <option value="moroco">Morrocco</option>
+                        </select>
+
+                        <label>How did you hear about ACTD ?</label>
+                        <div>
+                            <input type="radio" id="search-engines" name="refer" value="search-engines" required>
+                            <label for="search-engines">Search engine (Google, Bing, etc.)</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="facebook" name="refer" value="facebook">
+                            <label for="facebook">Facebook</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="twitter" name="refer" value="Twitter">
+                            <label for="twitter">Twitter</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="other" name="refer" value="Other">
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+
+                    <div class="form-section mt-10 mb-5">
+                        <h2 class="">Additional Information</h2>
+                        <hr class="bg-logo-color h-1">
+                        <label class="block" for="additional-info">Please provide any additional information that may support your application:</label>
+                        <textarea class="w-full mb-5 text-gray-800" id="additional-info" name="additional-info" rows="5"></textarea>
+                    </div>            
+                    <button class="bg-logo-color px-5 py-2 rounded-md" type="submit">Submit Application</button>
+                </form>
+                
+            </div>                        
+        </div>
+        
+    </div>    
+</main> 
+{{end}}

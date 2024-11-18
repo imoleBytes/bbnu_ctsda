@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accreditation Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .checkbox-group {
+            margin-bottom: 10px;
+        }
+        .checkbox-group label {
+            font-weight: normal;
+        }
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .form-section {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Accreditation Application Form</h1>
+    <form action="#" method="post">
+        <div class="form-section">
+            <h2>1. Institution Information</h2>
+            <label for="institution-name">Institution Name:</label>
+            <input type="text" id="institution-name" name="institution-name" required>
+            
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+            
+            <label for="website">Website:</label>
+            <input type="text" id="website" name="website">
+            
+            <label for="established-date">Date Established:</label>
+            <input type="date" id="established-date" name="established-date" required>
+        </div>
+
+        <div class="form-section">
+            <h2>2. Contact Information</h2>
+            <label for="contact-name">Primary Contact Name:</label>
+            <input type="text" id="contact-name" name="contact-name" required>
+            
+            <label for="contact-email">Email:</label>
+            <input type="email" id="contact-email" name="contact-email" required>
+            
+            <label for="contact-phone">Phone:</label>
+            <input type="tel" id="contact-phone" name="contact-phone" required>
+        </div>
+
+        <div class="form-section">
+            <h2>3. Accreditation Details</h2>
+            <label for="accreditation-type">Type of Accreditation:</label>
+            <select id="accreditation-type" name="accreditation-type" required>
+                <option value="">Select an option</option>
+                <option value="institutional">Institutional</option>
+                <option value="programmatic">Programmatic</option>
+                <option value="specialized">Specialized</option>
+            </select>
+            
+            <label for="previous-accreditation">Previous Accreditation (if any):</label>
+            <input type="text" id="previous-accreditation" name="previous-accreditation">
+            
+            <div class="checkbox-group">
+                <label>Areas of Focus:</label>
+                <div>
+                    <input type="checkbox" id="focus-academic" name="focus[]" value="academic">
+                    <label for="focus-academic">Academic Excellence</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="focus-research" name="focus[]" value="research">
+                    <label for="focus-research">Research</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="focus-community" name="focus[]" value="community">
+                    <label for="focus-community">Community Engagement</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>4. Documentation</h2>
+            <p>Please indicate which documents you will be submitting with your application:</p>
+            <div class="checkbox-group">
+                <div>
+                    <input type="checkbox" id="doc-mission" name="documents[]" value="mission">
+                    <label for="doc-mission">Mission Statement</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="doc-curriculum" name="documents[]" value="curriculum">
+                    <label for="doc-curriculum">Curriculum Overview</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="doc-faculty" name="documents[]" value="faculty">
+                    <label for="doc-faculty">Faculty Credentials</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="doc-financial" name="documents[]" value="financial">
+                    <label for="doc-financial">Financial Statements</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>5. Additional Information</h2>
+            <label for="additional-info">Please provide any additional information that may support your application:</label>
+            <textarea id="additional-info" name="additional-info" rows="5"></textarea>
+        </div>
+
+        <button type="submit">Submit Application</button>
+    </form>
+</body>
+</html>
