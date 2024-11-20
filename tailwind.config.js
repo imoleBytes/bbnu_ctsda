@@ -8,6 +8,7 @@ module.exports = {
             'whitesmoke': '#f5f5f5',
             'darkwhitesmoke': '#a9a9aa',
             'logo-color': '#edc329',
+            'logo-color-deep': '#ffc800',
             'button-color': '#dc3433',
           },
     },
