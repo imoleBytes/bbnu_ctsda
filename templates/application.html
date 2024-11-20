@@ -1,0 +1,133 @@
+{{define "content"}}
+<!-- <main id="hero" class="bg-no-repeat bg-cover bg-fixed]"> -->
+    <main id="" class="bg-slate-300 font-mono">
+    <div class="w-11/12 md:w-3/5 mx-auto flex h-full ">
+        <!-- <div class="content w-full bg-black bg-opacity-80 text-white px-5 py-10"> -->
+        <div class="content w-full px-5 py-10">
+
+            <h2 class="mb-5 font-bold text-2xl pb-5 border-b border-b-logo-color">
+                Institutional Accreditation Application
+            </h2>
+
+            <div class="my-10">
+                <p class="my-5 text-xl">
+                    Once you have all the necessary information and are ready to proceed with the CTSDA accreditation process, please fill out the form below. Our team will review your submission and contact you via the email address provided.
+                </p>
+
+                <form id="start-form" action="#" method="post" class="text-xl w-full md:w-4/5 m-auto border border-solid border-green-50 p-2">
+                    <div class="form-section">
+                        <label class="block" for="institution">Institution/Company Name:</label>
+                        <input class="block p-2 w-full text-gray-800" type="text" id="institution" name="institution" placeholder="Institution Name" required>
+                        <p class="mb-5 text-xs">Please enter the full name of your institution or company.</p>
+
+                        <label class="block" for="legal-status">Legal Status:</label>
+                        <input class="block p-2 w-full text-gray-800" type="text" id="legal-status" name="legal-status" placeholder="legal status" required>
+                        <p class="mb-5 text-xs">Specify the legal status (e.g., Government Department, Private Company, Association, LLC, etc.).</p>
+
+                        <label class="block" for="registration-number">Registration Number:</label>
+                        <input class="block p-2 w-full text-gray-800" type="text" id="registration-number" name="registration-number" placeholder="Registration Number" required>
+                        <p class="mb-5 text-xs">Provide the registration number of your institution or company. We will request a copy of the registration document later.</p>
+
+                        <label class="block" for="country">Country of Registration:</label>
+                        <input class="block w-full p-2 text-gray-800" type="country" id="country" name="country" placeholder="Country" required>
+                        <p class="mb-5 text-xs">Indicate the country where your institution or company is registered.</p>
+
+                        <label class="block" for="address">Physical Address:</label>
+                        <textarea class="block w-full p-2 text-gray-800" id="address" name="address" placeholder="full address" required></textarea>
+                        <p class="mb-5 text-xs">Enter the complete physical address of your institution or company.</p>
+                        
+                        <label class="block" for="email">Email Address:</label>
+                        <input class="block w-full p-2 text-gray-800" type="email" id="email" name="email" placeholder="E-mail" required>
+                        <p class="mb-5 text-xs">Provide the official email address of your institution or company.</p>
+
+                        <label class="block" for="person-name">Contact Person's Name:</label>
+                        <input class="block p-2 w-full text-gray-800" type="text" id="person-name" name="person-name" required>
+                        <p class="mb-5 text-xs">Enter the name of the person submitting this application.</p>
+
+
+                        <label class="block" for="person-position">Position of Contact Person:</label>
+                        <input class="block p-2 w-full text-gray-800" type="text" id="person-position" name="person-position" required>
+                        <p class="mb-5 text-xs">Specify the position of the person submitting this application (e.g., Director, Chairman, Owner, Quality Manager, Accreditation Manager).</p>
+
+                        <label class="block" for="person-phone">Mobile Phone Number:</label>
+                        <input class="block p-2 w-full text-gray-800" type="tel" id="person-phone" name="person-phone" required>
+                        <p class="mb-5 text-xs">Include the mobile phone number with the international code. Preferably, this number should be reachable via WhatsApp.</p>
+
+                        <label class="block" for="establishment-date">Date of Establishment:</label>
+                        <input class="block p-2 w-full text-gray-800" type="date" id="establishment-date" name="establishment-date" required>
+                        <p class="mb-5 text-xs">Enter the date when your institution or company was established.</p>
+
+                        <label class="block" for="training-areas">Main Training Areas:</label>
+                        <textarea class="block p-2 w-full text-gray-800" id="training-areas" name="training-areas" required></textarea>
+                        <p class="mb-5 text-xs">Describe the primary training areas offered by your institution or company.</p>
+
+                        <label class="block" for="certificate-type">Types of Certificates Issued:</label>
+                        <textarea class="block p-2 w-full text-gray-800" id="certificate-type" name="certificate-type" required></textarea>
+                        <p class="mb-5 text-xs">Detail the types of certificates your institution or company issues.</p>
+
+                        <label class="block" for="admission-requirements">Admission Requirements:</label>
+                        <textarea class="block p-2 w-full text-gray-800" id="admission-requirements" name="admission-requirements" required></textarea>
+                        <p class="mb-5 text-xs">Explain the conditions for accepting trainees at your institution or company.</p>
+
+                        <label class="block" for="training-method">Training Delivery Methods:</label>
+                        <select class="block p-2 w-full mb-5 text-gray-800" id="training-method" name="training-method" required>
+                            <option value="">Select the method(s) of delivering</option>
+                            <option value="nigeria">In-Person</option>
+                            <option value="benin">Online</option>
+                            <option value="usa">Hybrid</option>
+                        </select>
+
+                        <label class="block" for="programs-annualized">Annual Training Programs:</label>
+                        <input class="block p-2 w-full text-gray-800" type="number" id="programs-annualized" name="programs-annualized">
+                        <p class="mb-5 text-xs">Provide an approximate total number of training programs conducted each year.</p>
+
+                        <label class="block" for="number-of-staff">Total Staff:</label>
+                        <input class="block p-2 w-full text-gray-800" type="number" id="number-of-staff" name="number-of-staff" required>
+                        <p class="mb-5 text-xs">State the total number of staff members.</p>
+
+                        <label class="block" for="training-count-annualized">Annual Trainee Count:</label>
+                        <input class="block w-full p-2 text-gray-800" type="number" id="training-count-annualized" name="training-count-annualized" required>
+                        <p class="mb-5 text-xs">Indicate the number of trainees enrolled each year.</p>
+
+                        <label class="block" for="website">Website:</label>
+                        <input class="block w-full p-2 text-gray-800" type="url" id="website" name="website" required>
+                        <p class="mb-5 text-xs">Provide the URL of your institution's or company's website. An active website is crucial for accreditation.</p>
+
+                        <label class="block" for="socials">Social Media Links:</label>
+                        <textarea class="w-full p-2 text-gray-800" id="socials" name="socials" rows="6" placeholder="E.g. 
+                        http://www.facebook.com/your_company_name
+                        https://twitter.com/your_company_name"></textarea>
+                        <p class="mb-5 text-xs">Enter the links to your institution's or company's social media accounts. Active social media presence is important for accreditation.</p>
+
+                        <label class="block" for="local-accreditation">Local Accreditation Documents:</label>
+                        <textarea class="block w-full p-2 text-gray-800" id="local-accreditation" name="local-accreditation" rows="5"></textarea>
+                        <p class="mb-5 text-xs">If available, provide details of any local accreditation documents.</p>
+
+                        <label class="block" for="international-accreditation">International Accreditation Documents:</label>
+                        <textarea class="block w-full p-2 text-gray-800" id="international-accreditation" name="international-accreditation" rows="5"></textarea>
+                        <p class="mb-5 text-xs">If available, provide details of any international accreditation documents.</p>
+
+                        <label class="block" for="consent">Final Instructions:</label>
+                        <input type="checkbox" name="" id="consent" required>
+                        <span>By submitting this application, you agree to the following:</span>
+                        <ul class="">
+                            <li>cover all fees and costs associated with the accreditation process.</li>
+                            <li>commit to providing unrestricted access to information, documents, and records as required for assessment and maintenance of accreditation.</li>
+                        </ul>
+                    </div>
+
+                    <button class="block bg-logo-color my-2 w-full py-2 text-black font-mono font-bold rounded-md" type="submit">Submit Application</button>
+
+                </form>
+                <div class="mt-10">
+                    <ul>
+                        <li>If you have any questions, please contact us before submitting your request. We will respond to all inquiries.</li>
+                        <li>Do not submit an accreditation request unless you are certain about obtaining accreditation.</li>
+                    </ul>                
+                </div>                
+            </div>                        
+        </div>
+        
+    </div>    
+</main> 
+{{end}}

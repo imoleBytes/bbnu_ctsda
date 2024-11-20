@@ -15,3 +15,13 @@ func Start(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, nil)
 	// io.WriteString(w, "<h1>Contact Page<h1>")
 }
+
+func Application(w http.ResponseWriter, r *http.Request) {
+	// template.ParseFiles("templa")
+	tmpl, err := template.ParseFiles("templates/base.html", "templates/application.html", "templates/header.html", "templates/footer.html")
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
