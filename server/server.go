@@ -31,6 +31,8 @@ func (s *Server) RegisterRoutes() {
 	s.Router.HandleFunc("GET /application", routes.Application)
 
 	s.Router.HandleFunc("GET /dashboard", routes.Dashboard)
+	s.Router.HandleFunc("GET /dash-page", routes.DashPage)
+	s.Router.HandleFunc("GET /validate-page", routes.ValidatePage)
 
 	s.Router.HandleFunc("GET /network", routes.Network)
 	s.Router.HandleFunc("GET /network/{tag}", routes.SingleNetwork)
