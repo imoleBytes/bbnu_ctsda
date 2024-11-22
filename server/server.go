@@ -3,6 +3,7 @@ package server
 import (
 	"ctsda/config"
 	"ctsda/routes"
+	"fmt"
 	"net/http"
 )
 
@@ -30,9 +31,14 @@ func (s *Server) RegisterRoutes() {
 	s.Router.HandleFunc("GET /start", routes.Start)
 	s.Router.HandleFunc("GET /application", routes.Application)
 
-	s.Router.HandleFunc("GET /dashboard", routes.Dashboard)
+	s.Router.HandleFunc("/login", routes.Login)
+	s.Router.HandleFunc("GET /dashboard", authorize(routes.Dashboard))
+	// s.Router.HandleFunc("GET /dashboard", routes.Dashboard)
+
 	s.Router.HandleFunc("GET /dash-page", routes.DashPage)
 	s.Router.HandleFunc("GET /validate-page", routes.ValidatePage)
+	s.Router.HandleFunc("GET /institute-query", routes.AdminQueryInstitute)
+	s.Router.HandleFunc("PUT /togglevalidity", routes.AdminToggleValidity)
 
 	s.Router.HandleFunc("GET /network", routes.Network)
 	s.Router.HandleFunc("GET /network/{tag}", routes.SingleNetwork)
@@ -49,4 +55,24 @@ func NewServer() Server {
 	}
 	server.RegisterRoutes()
 	return server
+}
+
+func authorize(f http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("got to redirect and authorize!")
+		// pass := r.Header.Get("Authorization")
+		pass, _ := r.Cookie("Authorization")
+
+		fmt.Println("Pass is: " + pass.Value)
+
+		if pass.Value == "Bearer true" {
+			fmt.Println("enter pass ==true in authorize!")
+
+			f(w, r)
+		} else {
+			fmt.Println("didnt pass ==true in authorize!")
+
+			http.Redirect(w, r, "/login", http.StatusTemporaryRedirect)
+		}
+	}
 }

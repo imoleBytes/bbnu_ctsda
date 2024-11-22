@@ -1,0 +1,18 @@
+<div class="company-info ">
+    <p><strong>Company Name:</strong> <span id="companyName">{{.Name}}</span></p>
+    <p><strong>Company ID:</strong> <span id="companyId">{{.Id}}</span></p>
+    <p><strong>Status:</strong> <span id="companyStatus" class="status">{{.Status}}</span></p>
+    <p><strong>Code:</strong> <span id="companyStatus" class="status">{{.Code}}</span></p>
+    <p><strong>Person of Contact:</strong> <span id="companyStatus" class="status">{{.Person}}</span></p>
+    <p><strong>Phone:</strong> <span id="companyStatus" class="status">{{.Phone}}</span></p>
+
+
+</div>
+
+<button class="mt-5 px-4 py-2 shadow-md shadow-slate-500 rounded-lg active:translate-y-2 transition-transform border w-full" id="toggleButton" hx-put="/togglevalidity?id={{.Id}}&validity={{.Status}}" hx-target=".instituteContent">
+    {{if eq .Status "valid"}}
+        Invalidate
+    {{else}}
+        Validate
+    {{end}}
+</button>
