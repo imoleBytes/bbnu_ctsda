@@ -10,6 +10,19 @@
                 CTSDA Accredited Global Network 2025
             </h2>
             <div class="cards my-5 flex gap-2 flex-wrap">
+
+                {{range .}}
+                <div class="h-96 bg-red-400">
+                    <hr>
+                    <h1>{{.Name}}</h1>
+                    <p>{{.Id}}</p>
+                    <p>{{.Description}}</p>
+                    <hr>
+                </div>
+                {{end}}
+
+
+
                 <div class="card px-2 py-5 items-center flex-[0_0_calc(50%-0.5rem)] gap-2 flex border border-gray-400">
                     <div class="img w-3/12">
                         <img class="w-full" src="/public/img/logo.jpeg" alt="">

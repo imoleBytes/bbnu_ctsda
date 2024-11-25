@@ -24,7 +24,6 @@ func (s *Server) RegisterRoutes() {
 	// 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 	// })
 	s.Router.HandleFunc("GET /{$}", routes.Index)
-
 	s.Router.HandleFunc("GET /about", routes.About)
 	s.Router.HandleFunc("GET /services", routes.Services)
 	s.Router.HandleFunc("GET /contact", routes.Contact)
@@ -49,10 +48,12 @@ func (s *Server) RegisterRoutes() {
 }
 
 func NewServer() Server {
+
 	server := Server{
 		Address: config.SERVER_ADDRESS,
 		Router:  http.NewServeMux(),
 	}
+
 	server.RegisterRoutes()
 	return server
 }
@@ -61,7 +62,12 @@ func authorize(f http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("got to redirect and authorize!")
 		// pass := r.Header.Get("Authorization")
-		pass, _ := r.Cookie("Authorization")
+		pass, err := r.Cookie("Authorization")
+		if err != nil {
+			fmt.Println("err: " + err.Error())
+			http.Redirect(w, r, "/login", http.StatusTemporaryRedirect)
+			return
+		}
 
 		fmt.Println("Pass is: " + pass.Value)
 

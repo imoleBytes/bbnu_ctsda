@@ -17,12 +17,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := IndexData{
+	data := struct {
+		Title string
+		Data  string
+	}{
 		Title: "Home--CTSDA",
-		Body:  "dummy somethennnng",
 	}
 
-	if err = tmpl.ExecuteTemplate(w, "base.html", &data); err != nil {
+	if err = tmpl.ExecuteTemplate(w, "base.html", data); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(http.StatusText(http.StatusInternalServerError)))
 		log.Println("GET "+r.URL.Path+":", err)

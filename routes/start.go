@@ -12,6 +12,7 @@ func Start(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
+
 	tmpl.Execute(w, nil)
 	// io.WriteString(w, "<h1>Contact Page<h1>")
 }
@@ -23,5 +24,12 @@ func Application(w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 		return
 	}
-	tmpl.Execute(w, nil)
+	data := struct {
+		Title string
+		Data  string
+	}{
+		Title: "Application--CTSDA",
+	}
+
+	tmpl.Execute(w, data)
 }

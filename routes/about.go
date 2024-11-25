@@ -16,9 +16,12 @@ func About(w http.ResponseWriter, r *http.Request) {
 		log.Println("GET "+r.URL.Path+":", err)
 		return
 	}
-	data := IndexData{
+	data := struct {
+		Title string
+		Data  string
+	}{
 		Title: "About--CTSDA",
-		Body:  "different content",
 	}
+
 	tmpl.ExecuteTemplate(w, "base.html", data)
 }
