@@ -54,3 +54,39 @@ func getDB() (*sql.DB, error) {
 	}
 	return db, nil
 }
+
+func SetupDB() {
+	db, err := getDB()
+	if err != nil {
+		log.Fatalf("Unable to setup DB: %v\n", err)
+	}
+	defer db.Close()
+
+	// CREATE USERS TABLE
+	createTableQuery := `
+	CREATE TABLE IF NOT EXISTS users (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		first_name TEXT NOT NULL,
+		last_name TEXT NOT NULL
+	);`
+	_, err = db.Exec(createTableQuery)
+	if err != nil {
+		log.Fatalf("Failed to create users table: %v", err)
+	}
+
+	// CREATE INSTITUTIONS TABLE
+
+	// EDIT HERE BELOW!!!!!!!!!!!!!!
+
+	createTableQuery = `
+	CREATE TABLE IF NOT EXISTS institutions (
+		id TEXT PRIMARY KEY,
+		name TEXT NOT NULL,
+		me TEXT NOT NULL
+	);`
+	_, err = db.Exec(createTableQuery)
+	if err != nil {
+		log.Fatalf("Failed to create users table: %v", err)
+	}
+	// EDIT INSTITUIONS!!!!!!!!!
+}

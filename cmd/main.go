@@ -2,7 +2,6 @@ package main
 
 import (
 	"ctsda/server"
-	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
@@ -11,25 +10,8 @@ import (
 )
 
 func init() {
-	db, err := sql.Open("sqlite3", "data/bbnu.db")
-	if err != nil {
-		log.Fatalf("Failed to connect to the database: %v\n", err)
-	}
-	if err = db.Ping(); err != nil {
-		log.Fatalf("Not pinging...: %v", err)
-	}
-	defer db.Close()
-
-	createTableQuery := `
-	CREATE TABLE IF NOT EXISTS users (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		name TEXT NOT NULL,
-		age INTEGER
-	);`
-	_, err = db.Exec(createTableQuery)
-	if err != nil {
-		log.Fatalf("Failed to create table: %v", err)
-	}
+	// initialize db here!!!!
+	// storage.SetupDB()
 
 }
 
