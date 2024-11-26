@@ -1,9 +1,81 @@
 package storage
 
 import (
+	"ctsda/utils"
 	"database/sql"
+	"fmt"
 	"log"
+	"os"
+
+	"github.com/google/uuid"
 )
+
+func CreateInstitution(data *utils.ApplicantData) error {
+	db, err := getDB()
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+	id := uuid.New().String()
+	query := `
+	INSERT INTO institutions
+	(
+		id, name, legal_status, 
+		reg_number, country, address, 
+		email, contact_person, contact_person_position, 
+		contact_person_phone, established_date, training_areas, 
+		certificates_issued, admission_requirements, delivery_method, 
+		annual_training_programs, annual_trainee_count, total_staff, 
+		website, social_links, local_accreditation, 
+		international_accreditation
+	) 
+	VALUES
+	(
+		?,?,?,?,?,?,?,?,
+		?,?,?,?,?,?,?,
+		?,?,?,?,?,?,?
+	);`
+
+	_, err = db.Exec(query,
+		id, data.Name, data.LegalStatus,
+		data.RegNum, data.Country, data.Address,
+		data.Email, data.ContactPerson, data.ContactPersonPosition,
+		data.ContactPersonPhone, data.Established, data.TrainingAreas,
+		data.CertificatesIssued, data.AdmissionRequirements, data.DeliveryMethod,
+		data.AnnualTrainingPrograms, data.AnnualTraineeCount, data.TotalStaff,
+		data.Website, data.SocialLinks, data.LocalDocuments,
+		data.InternationalDocuments)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+	return nil
+
+}
+
+func GetInstitution(id string) (*Company, error) {
+	db, err := getDB()
+	if err != nil {
+		return nil, err
+	}
+	defer db.Close()
+
+	queryIntitute := `SELECT name, validity, image_url, body FROM institutions WHERE id = ?;`
+	row := db.QueryRow(queryIntitute, id)
+
+	var Institute Company
+
+	err = row.Scan(&Institute.Name, &Institute.Validity, &Institute.ImageUrl, &Institute.Body)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			log.Println("No Institute found with the given ID.")
+		} else {
+			log.Printf("Failed to query Institute: %v", err)
+		}
+		return nil, err
+	}
+	return &Institute, nil
+}
 
 func GetInstitutions() ([]Institution, error) {
 	db, err := getDB()
@@ -41,6 +113,12 @@ type Institution struct {
 	ImageUrl    string
 	Description string
 }
+type Company struct {
+	Name     string
+	Validity bool
+	ImageUrl string
+	Body     string
+}
 
 func getDB() (*sql.DB, error) {
 	db, err := sql.Open("sqlite3", "data/bbnu.db")
@@ -62,31 +140,13 @@ func SetupDB() {
 	}
 	defer db.Close()
 
-	// CREATE USERS TABLE
-	createTableQuery := `
-	CREATE TABLE IF NOT EXISTS users (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		first_name TEXT NOT NULL,
-		last_name TEXT NOT NULL
-	);`
-	_, err = db.Exec(createTableQuery)
+	contents, err := os.ReadFile("storage/setup.sql")
 	if err != nil {
-		log.Fatalf("Failed to create users table: %v", err)
+		log.Fatalf("error reading setup.sql: %v\n", err)
 	}
-
-	// CREATE INSTITUTIONS TABLE
-
-	// EDIT HERE BELOW!!!!!!!!!!!!!!
-
-	createTableQuery = `
-	CREATE TABLE IF NOT EXISTS institutions (
-		id TEXT PRIMARY KEY,
-		name TEXT NOT NULL,
-		me TEXT NOT NULL
-	);`
-	_, err = db.Exec(createTableQuery)
+	_, err = db.Exec(string(contents))
 	if err != nil {
-		log.Fatalf("Failed to create users table: %v", err)
+		log.Fatalf("Failed to run query from file: %v", err)
 	}
-	// EDIT INSTITUIONS!!!!!!!!!
+	fmt.Println("Query from file ran successfully!")
 }

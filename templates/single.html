@@ -3,38 +3,19 @@
     <div class="w-11/12 md:w-3/5 mx-auto flex h-full ">
         <div class="content w-full bg-black bg-opacity-80 text-white px-5 py-10">
             <h2 class="font-bold text-2xl pb-5 border-b border-b-logo-color">
-                TETFund Centre of Excellence for Innovative Teaching and Learning
+                {{.Name}}
             </h2>
 
-            <div class="my-5 text-right text-lg font-medium">Accreditation status: <span class="text-green-400 font-bold">Valid</span></div>
+            <div class="my-5 text-right text-lg font-medium">Accreditation status: <span class="text-green-400 font-bold">{{.Validity}}</span></div>
 
             <div class="card px-2 py-5 md:items-center md:flex-[0_0_calc(50%-0.5rem)] md:gap-5 md:flex border border-gray-400">
                 <div class="img mb-5 md:w-3/12">
-                    <img class="max-md:max-w-[400px] md:w-full m-auto" src="/public/img/logo.jpeg" alt="">
+                    <img class="max-md:max-w-[400px] md:w-full m-auto" src="/public/img/{{.ImageUrl}}" alt="{{.Name}} logo">
                 </div>
                 <div class="details md:w-9/12">
-                    <p class="text-sm">
-                        TETFund Centre of Excellence for Innovative Teaching and Learning In Primary and Early Childhood Education (T_CEIPEC)  is professional training institution registered in Nigeria. 
-
-It aims to enhance teacher training and educational methodologies in Nigeria. Focusing on primary and early childhood education emphasizes research-based innovations and quality teaching standards to improve the foundational educational experience.
-
-TETFund Center offers a range of programs that include workshops, courses, and research opportunities. Its initiatives cover digital literacy, developmental education, and inclusive practices, partnering with organizations like the British Council to expand resources and certifications for pre-service teachers.
-
-Additionally, it supports scholarly work by inviting papers, promoting research, and sharing educational resources through its platform, which includes an e-library and a repository for publications on early childhood and primary education practices.
-
-TETFund Centre of Excellence for Innovative Teaching and Learning In Primary and Early Childhood Education (T_CEIPEC) has met the ACTD accreditation requirements in accordance with internationally recognized standards and general requirements for professional training with the ACTD standards of accreditation.
-As a consequence, it has become a part of the ACTD global network of accredited institutions.
-
-This legal entity is accredited by the American Council on Training and Development ( ACTD )
-                    </p>
+                    <p class="text-sm">{{.Body}}</p>
                 </div>
             </div>
-            <!-- <div class="cards my-5 flex gap-2 flex-wrap">
-                    
-                
-            </div> -->
-            
-            
         </div>
         
     </div>    

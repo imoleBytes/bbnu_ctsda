@@ -1,10 +1,10 @@
 package server
 
 import (
-	"ctsda/config"
 	"ctsda/routes"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 type Server struct {
@@ -29,6 +29,7 @@ func (s *Server) RegisterRoutes() {
 	s.Router.HandleFunc("GET /contact", routes.Contact)
 	s.Router.HandleFunc("GET /start", routes.Start)
 	s.Router.HandleFunc("GET /application", routes.Application)
+	s.Router.HandleFunc("POST /application", routes.SubmitApplication)
 
 	s.Router.HandleFunc("/login", routes.Login)
 	s.Router.HandleFunc("GET /dashboard", authorize(routes.Dashboard))
@@ -40,7 +41,7 @@ func (s *Server) RegisterRoutes() {
 	s.Router.HandleFunc("PUT /togglevalidity", routes.AdminToggleValidity)
 
 	s.Router.HandleFunc("GET /network", routes.Network)
-	s.Router.HandleFunc("GET /network/{tag}", routes.SingleNetwork)
+	s.Router.HandleFunc("GET /network/{id}", routes.SingleNetwork)
 
 	s.Router.HandleFunc("GET /verify-cert", routes.VerifyCert)
 	s.Router.HandleFunc("POST /verify-cert", routes.PostVerifyCert)
@@ -48,9 +49,10 @@ func (s *Server) RegisterRoutes() {
 }
 
 func NewServer() Server {
+	var SERVER_ADDRESS = fmt.Sprintf("%s:%s", os.Getenv("SERVER_HOST"), os.Getenv("SERVER_PORT"))
 
 	server := Server{
-		Address: config.SERVER_ADDRESS,
+		Address: SERVER_ADDRESS,
 		Router:  http.NewServeMux(),
 	}
 

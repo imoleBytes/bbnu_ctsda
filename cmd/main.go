@@ -2,17 +2,23 @@ package main
 
 import (
 	"ctsda/server"
+	"ctsda/storage"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
+	"github.com/joho/godotenv"
 	_ "github.com/mattn/go-sqlite3"
 )
 
 func init() {
+	godotenv.Load() // load .env file
 	// initialize db here!!!!
-	// storage.SetupDB()
-
+	setup := os.Getenv("INITIALIZE_DATABASE")
+	if setup == "true" {
+		storage.SetupDB()
+	}
 }
 
 func main() {

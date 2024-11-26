@@ -12,12 +12,16 @@
             <div class="cards my-5 flex gap-2 flex-wrap">
 
                 {{range .}}
-                <div class="h-96 bg-red-400">
-                    <hr>
-                    <h1>{{.Name}}</h1>
-                    <p>{{.Id}}</p>
-                    <p>{{.Description}}</p>
-                    <hr>
+                <div class="card px-2 py-5 items-center flex-[0_0_calc(50%-0.5rem)] gap-2 flex border border-gray-400">
+                    <div class="img w-3/12">
+                        <img class="w-full" src="/public/img/{{.ImageUrl}}" alt="{{.Name}}">
+                    </div>
+                    <div class="details w-9/12">
+                        <h2 class="font-medium">{{.Name}}</h2>
+                        <hr class="my-4 w-10 border-logo-color">
+                        <p class="text-sm">{{.Description}}<a href="/network/{{.Id}}"><span class="font-extrabold italic">...READ MORE</span></a>
+                        </p>
+                    </div>
                 </div>
                 {{end}}
 
