@@ -23,3 +23,17 @@ type ApplicantData struct {
 	LocalDocuments         string
 	InternationalDocuments string
 }
+
+type Institution struct {
+	Id          string
+	Name        string
+	ImageUrl    string
+	Description string
+}
+
+type Company struct {
+	Name     string
+	Validity bool
+	ImageUrl string
+	Body     string
+}

@@ -18,11 +18,17 @@ func VerifyCert(w http.ResponseWriter, r *http.Request) {
 		log.Println("GET "+r.URL.Path+":", err)
 		return
 	}
-	data := IndexData{
+
+	data := struct {
+		Title string
+		Data  string
+	}{
 		Title: "Verify--CTSDA",
-		// Body:  "different content",
 	}
-	tmpl.ExecuteTemplate(w, "base.html", data)
+
+	if err = tmpl.ExecuteTemplate(w, "base.html", data); err != nil {
+		log.Printf("error rendering: %v\n", err)
+	}
 }
 
 func PostVerifyCert(w http.ResponseWriter, r *http.Request) {
@@ -57,4 +63,9 @@ func PostVerifyCert(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("code is: " + code)
 	tmpl.Execute(w, data)
 	// tmpl.ExecuteTemplate(w, "base.html", data)
+}
+
+type IndexData struct {
+	Title string
+	Body  string
 }

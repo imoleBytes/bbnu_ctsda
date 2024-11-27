@@ -37,6 +37,9 @@ func (s *Server) RegisterRoutes() {
 
 	s.Router.HandleFunc("GET /dash-page", routes.DashPage)
 	s.Router.HandleFunc("GET /validate-page", routes.ValidatePage)
+	s.Router.HandleFunc("GET /assign-code-page", routes.AssignCode)
+	s.Router.HandleFunc("POST /assign-code-page", routes.PostAssignCode)
+
 	s.Router.HandleFunc("GET /institute-query", routes.AdminQueryInstitute)
 	s.Router.HandleFunc("PUT /togglevalidity", routes.AdminToggleValidity)
 

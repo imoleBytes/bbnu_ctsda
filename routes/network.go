@@ -1,7 +1,9 @@
 package routes
 
 import (
-	"ctsda/storage"
+	"ctsda/db"
+	"ctsda/models"
+	"ctsda/utils"
 	"html/template"
 	"log"
 	"net/http"
@@ -10,7 +12,9 @@ import (
 func Network(w http.ResponseWriter, r *http.Request) {
 	// get data from db
 	println("1")
-	institutions, err := storage.GetInstitutions()
+
+	institutions, err := models.GetInstitutions(&db.Store)
+	// institutions, err := storage.GetInstitutions()
 	if err != nil {
 		println("2")
 
@@ -36,7 +40,8 @@ func Network(w http.ResponseWriter, r *http.Request) {
 	}
 	data := struct {
 		Title string
-		Data  []storage.Institution
+		Data  []utils.Institution
+		// Data  []storage.Institution
 	}{
 		Title: "Networks--CTSDA",
 		Data:  institutions,

@@ -1,7 +1,9 @@
 package routes
 
 import (
-	"ctsda/storage"
+	"ctsda/db"
+	"ctsda/models"
+	"ctsda/utils"
 	"fmt"
 	"html/template"
 	"log"
@@ -22,7 +24,9 @@ func SingleNetwork(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Tag is: " + id)
 
 	// get a single institue using the tag value
-	institute, err := storage.GetInstitution(id)
+	institute, err := models.GetInstitution(&db.Store, id)
+
+	// institute, err := storage.GetInstitution(id)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(http.StatusText(http.StatusInternalServerError)))
@@ -33,7 +37,7 @@ func SingleNetwork(w http.ResponseWriter, r *http.Request) {
 	// then render it
 	data := struct {
 		Title string
-		Data  *storage.Company
+		Data  *utils.Company
 	}{
 		Title: "Network--CTSDA",
 		Data:  institute,

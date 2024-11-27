@@ -28,6 +28,40 @@ func ValidatePage(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, nil)
 }
 
+func AssignCode(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/dashboard/assignCodePage.html")
+	if err != nil {
+		io.WriteString(w, err.Error())
+		log.Println(err)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
+
+func PostAssignCode(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	companyID := r.PostFormValue("company-id")
+
+	code := "CT-DA-S1234"
+
+	tmpl, err := template.ParseFiles("templates/dashboard/codeAssigned.html")
+	if err != nil {
+		io.WriteString(w, err.Error())
+		log.Println(err)
+		return
+	}
+	data := struct {
+		CompanyID string
+		Code      string
+	}{
+		CompanyID: companyID,
+		Code:      code,
+	}
+	if err = tmpl.Execute(w, &data); err != nil {
+		log.Println(err)
+	}
+}
+
 func DashPage(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("templates/dashboard/dash.html")
 	if err != nil {

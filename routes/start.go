@@ -1,7 +1,8 @@
 package routes
 
 import (
-	"ctsda/storage"
+	"ctsda/db"
+	"ctsda/models"
 	"ctsda/utils"
 	"html/template"
 	"log"
@@ -69,7 +70,8 @@ func SubmitApplication(w http.ResponseWriter, r *http.Request) {
 		InternationalDocuments: values.Get("international-accreditation"),
 	}
 
-	err := storage.CreateInstitution(&applicant)
+	err := models.CreateInstitution(&db.Store, &applicant)
+	// err := storage.CreateInstitution(&applicant)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		log.Println(err)
@@ -80,18 +82,4 @@ func SubmitApplication(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	w.Write([]byte("Institutes created successfully!!"))
 	w.Write([]byte("\nThanks for submitting, we will get back to you soon."))
-
-	// tmpl, err := template.ParseFiles("templates/base.html", "templates/application.html", "templates/header.html", "templates/footer.html")
-	// if err != nil {
-	// 	log.Println(err)
-	// 	return
-	// }
-	// data := struct {
-	// 	Title string
-	// 	Data  string
-	// }{
-	// 	Title: "Application--CTSDA",
-	// }
-
-	// tmpl.Execute(w, data)
 }

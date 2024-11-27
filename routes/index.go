@@ -30,8 +30,3 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		log.Println("GET "+r.URL.Path+":", err)
 	}
 }
-
-type IndexData struct {
-	Title string
-	Body  string
-}
