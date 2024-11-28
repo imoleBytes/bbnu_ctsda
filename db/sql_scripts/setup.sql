@@ -33,6 +33,15 @@ CREATE TABLE IF NOT EXISTS institutions(
     social_links TEXT DEFAULT '',
     local_accreditation TEXT DEFAULT '',
     international_accreditation TEXT DEFAULT '',
-    ctsda_code TEXT DEFAULT '',
+    ctsda_code TEXT DEFAULT 'nil',
     validity BOOLEAN DEFAULT 0
 );
+
+
+-- Create institutions table
+CREATE TABLE IF NOT EXISTS stats(
+    last_number_from_code INTEGER DEFAULT 0
+);
+
+--Insert one record to stats
+INSERT INTO stats VALUES(0);

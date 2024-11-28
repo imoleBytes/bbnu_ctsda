@@ -972,6 +972,11 @@ video {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
 .bg-gray-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
@@ -1019,6 +1024,10 @@ video {
 
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
+}
+
+.bg-\[url\(\'\/public\/img\/girl_eng\.jpeg\'\)\] {
+  background-image: url('/public/img/girl_eng.jpeg');
 }
 
 .bg-cover {
@@ -1300,6 +1309,16 @@ video {
   position: relative;
   background-image: url("/public/img/engineers.jpeg");
   transition: background-image 1s ease-in-out;
+}
+
+/* #application{
+    position: relative;
+    background-image: url("/public/img/students_balloons.jpeg");
+    transition: background-image 1s ease-in-out;
+} */
+
+#start-form input, #start-form textarea{
+  background-color: gray;
 }
 
 #hero::before {

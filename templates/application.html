@@ -1,6 +1,9 @@
 {{define "content"}}
 <!-- <main id="hero" class="bg-no-repeat bg-cover bg-fixed]"> -->
-    <main id="" class="bg-slate-300 font-mono">
+    <!-- bg-[url('/public/img/girl_eng.jpeg')] -->
+<main id="application" class="bg-no-repeat bg-cover bg-fixed">
+    <!-- <main id="" class="bg-slate-300 font-mono"> -->
+
     <div class="w-11/12 md:w-3/5 mx-auto flex h-full ">
         <!-- <div class="content w-full bg-black bg-opacity-80 text-white px-5 py-10"> -->
         <div class="content w-full px-5 py-10">
@@ -14,10 +17,10 @@
                     Once you have all the necessary information and are ready to proceed with the CTSDA accreditation process, please fill out the form below. Our team will review your submission and contact you via the email address provided.
                 </p>
 
-                <form id="start-form" action="/application" method="post" class="text-xl w-full md:w-4/5 m-auto border border-solid border-green-50 p-2">
+                <form id="start-form" action="/application" method="post" class=" text-xl w-full md:w-4/5 m-auto border border-solid border-green-50 p-2">
                     <div class="form-section">
                         <label class="block" for="institution">Institution/Company Name:</label>
-                        <input class="block p-2 w-full text-gray-800" type="text" id="institution" name="institution" placeholder="Institution Name" required>
+                        <input class="bg-gray-300 block p-2 w-full text-gray-800" type="text" id="institution" name="institution" placeholder="Institution Name" required>
                         <p class="mb-5 text-xs">Please enter the full name of your institution or company.</p>
 
                         <label class="block" for="legal-status">Legal Status:</label>
@@ -72,9 +75,9 @@
                         <label class="block" for="training-method">Training Delivery Methods:</label>
                         <select class="block p-2 w-full mb-5 text-gray-800" id="training-method" name="training-method" required>
                             <option value="">Select the method(s) of delivering</option>
-                            <option value="nigeria">In-Person</option>
-                            <option value="benin">Online</option>
-                            <option value="usa">Hybrid</option>
+                            <option value="In-Person">In-Person</option>
+                            <option value="Online">Online</option>
+                            <option value="Hybrid">Hybrid</option>
                         </select>
 
                         <label class="block" for="programs-annualized">Annual Training Programs:</label>

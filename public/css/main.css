@@ -14,6 +14,16 @@
     background-image: url("/public/img/engineers.jpeg");
     transition: background-image 1s ease-in-out;
 }
+
+/* #application{
+    position: relative;
+    background-image: url("/public/img/students_balloons.jpeg");
+    transition: background-image 1s ease-in-out;
+} */
+#start-form input, #start-form textarea{
+    background-color: gray;
+}
+
 #hero::before {
     content: "";
     position: absolute;

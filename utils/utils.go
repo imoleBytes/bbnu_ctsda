@@ -1,6 +1,7 @@
 package utils
 
 type ApplicantData struct {
+	Id                     string
 	Name                   string
 	LegalStatus            string
 	RegNum                 string
@@ -22,6 +23,8 @@ type ApplicantData struct {
 	SocialLinks            string
 	LocalDocuments         string
 	InternationalDocuments string
+	Code                   string
+	Validity               bool
 }
 
 type Institution struct {

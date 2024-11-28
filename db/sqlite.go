@@ -48,6 +48,38 @@ type SqliteStoreProvider struct {
 	Db *sql.DB
 }
 
+func (s *SqliteStoreProvider) GetCompanies() ([]utils.ApplicantData, error) {
+	query := `
+	SELECT 
+	 id, name, ctsda_code, country, legal_status,
+	 validity, email, contact_person, contact_person_phone,
+	 delivery_method, website
+	FROM institutions;`
+
+	rows, err := s.Db.Query(query)
+	if err != nil {
+		log.Printf("error fetching companies: %+v\n", err)
+		return nil, err
+	}
+	defer rows.Close()
+	var companies []utils.ApplicantData
+	for rows.Next() {
+		var company utils.ApplicantData
+		err = rows.Scan(&company.Id, &company.Name, &company.Code,
+			&company.Country, &company.LegalStatus, &company.Validity,
+			&company.Email, &company.ContactPerson, &company.ContactPersonPhone,
+			&company.DeliveryMethod, &company.Website)
+
+		if err != nil {
+			log.Printf("Failed to read row: %v", err)
+			return nil, err
+		}
+
+		companies = append(companies, company)
+	}
+	return companies, err
+}
+
 // thisone talk straight with the database, here is where we should have the sql queries
 func (s *SqliteStoreProvider) GetInstitutions() ([]utils.Institution, error) {
 	// COALESCE is tohandle empty value. and supply default value if NULL

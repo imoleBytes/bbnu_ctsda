@@ -1,13 +1,33 @@
 package routes
 
 import (
+	"ctsda/db"
+	"ctsda/models"
+	"ctsda/utils"
 	"html/template"
 	"io"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func Dashboard(w http.ResponseWriter, r *http.Request) {
+
+	// get institutions from db
+	companies, err := models.GetCompanies(&db.Store)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadGateway)
+		log.Printf("error fetching companies: %v", err)
+		return
+	}
+
+	data := struct {
+		Title string
+		Data  []utils.ApplicantData
+	}{
+		Title: "Dashboard -- CTSDA",
+		Data:  companies,
+	}
 
 	tmpl, err := template.ParseFiles("templates/dashboard/base.html", "templates/dashboard/dash.html")
 	if err != nil {
@@ -15,7 +35,7 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 		return
 	}
-	tmpl.Execute(w, nil)
+	tmpl.Execute(w, data)
 }
 
 func ValidatePage(w http.ResponseWriter, r *http.Request) {
@@ -41,8 +61,15 @@ func AssignCode(w http.ResponseWriter, r *http.Request) {
 func PostAssignCode(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	companyID := r.PostFormValue("company-id")
+	companyID = strings.TrimSpace(companyID)
 
-	code := "CT-DA-S1234"
+	code, err := utils.GenerateCode(companyID)
+	if err != nil {
+
+		w.Write([]byte(err.Error()))
+		log.Println(err)
+		return
+	}
 
 	tmpl, err := template.ParseFiles("templates/dashboard/codeAssigned.html")
 	if err != nil {
@@ -63,13 +90,21 @@ func PostAssignCode(w http.ResponseWriter, r *http.Request) {
 }
 
 func DashPage(w http.ResponseWriter, r *http.Request) {
+
+	companies, err := models.GetCompanies(&db.Store)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadGateway)
+		log.Printf("error fetching companies: %v", err)
+		return
+	}
+
 	tmpl, err := template.ParseFiles("templates/dashboard/dash.html")
 	if err != nil {
 		io.WriteString(w, err.Error())
 		log.Println(err)
 		return
 	}
-	tmpl.ExecuteTemplate(w, "dashFragment", nil)
+	tmpl.ExecuteTemplate(w, "dashFragment", companies)
 }
 
 func AdminQueryInstitute(w http.ResponseWriter, r *http.Request) {

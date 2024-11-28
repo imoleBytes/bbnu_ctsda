@@ -45,20 +45,22 @@
             </tr>                            
         </thead>
         <tbody>
+            {{range .}}
             <tr class="odd:bg-gray-100 even:bg-white hover:bg-gray-200">
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">1</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">Glad Consultancy</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">CT-12038-AA</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.Id}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.Name}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.Code}}</td>
 
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">Gabon</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">Private Ltd.</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">Valid</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">some@email.com</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">Jimoh Ibrahim</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">098877665544</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">Online</td>
-                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">some.com</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.Country}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.LegalStatus}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{if .Validity}}Valid{{else}}Invalid{{end}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.Email}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.ContactPerson}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.ContactPersonPhone}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.DeliveryMethod}}</td>
+                <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{{.Website}}</td>
             </tr>
+            {{end}}
 
             <tr class="odd:bg-gray-100 even:bg-white hover:bg-gray-200">
                 <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">1</td>

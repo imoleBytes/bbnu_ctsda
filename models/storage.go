@@ -8,6 +8,11 @@ type Storage interface {
 	GetInstitutions() ([]utils.Institution, error)
 	GetInstitution(string) (*utils.Company, error)
 	CreateInstitution(*utils.ApplicantData) error
+	GetCompanies() ([]utils.ApplicantData, error)
+}
+
+func GetCompanies(store Storage) ([]utils.ApplicantData, error) {
+	return store.GetCompanies()
 }
 
 func GetInstitutions(store Storage) ([]utils.Institution, error) {
