@@ -1,15 +1,19 @@
 package routes
 
 import (
+	"bytes"
 	"ctsda/db"
 	"ctsda/models"
 	"ctsda/utils"
+	"fmt"
 	"html/template"
 	"io"
 	"log"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/yuin/goldmark"
 )
 
 func Dashboard(w http.ResponseWriter, r *http.Request) {
@@ -47,6 +51,43 @@ func ValidatePage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	tmpl.Execute(w, nil)
+}
+
+func UpdateForm(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/dashboard/updateForm.html")
+	if err != nil {
+		io.WriteString(w, err.Error())
+		log.Println(err)
+		return
+	}
+	tmpl.Execute(w, nil)
+}
+
+func PUTUpdateForm(w http.ResponseWriter, r *http.Request) {
+	// tmpl, err := template.ParseFiles("templates/dashboard/updateForm.html")
+	// if err != nil {
+	// 	io.WriteString(w, err.Error())
+	// 	log.Println(err)
+	// 	return
+	// }
+	r.ParseForm()
+
+	// id := r.PostFormValue("company-id")
+	markdownbody := strings.TrimSpace(r.PostFormValue("company-body"))
+
+	fmt.Print(markdownbody)
+
+	var buf bytes.Buffer
+
+	md := goldmark.New()
+	if err := md.Convert([]byte(markdownbody), &buf); err != nil {
+		log.Fatal(err)
+	}
+
+	io.WriteString(w, buf.String())
+	fmt.Println(buf.String())
+	// io.WriteString(w, fmt.Sprintf("Id: %s and Body: %s\n", id, body))
+	// tmpl.Execute(w, nil)
 }
 
 func AssignCode(w http.ResponseWriter, r *http.Request) {

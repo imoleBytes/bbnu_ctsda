@@ -1,0 +1,32 @@
+
+<div class="my-10">
+    <!-- <p class="my-5 text-xl">
+        Once you have all the necessary information and are ready to proceed with the CTSDA accreditation process, please fill out the form below. Our team will review your submission and contact you via the email address provided.
+    </p> -->
+
+    <form hx-put="/update-institute" hx-target=".content" class=" text-xl w-full md:w-4/5 m-auto border border-solid border-green-50 p-2">
+            <label class="block" for="company-id">Institute ID:</label>
+            <input class="block p-2 w-full text-gray-800" type="text" id="company-id" name="company-id" placeholder="institue ID" required>
+            <p class="mb-5 text-xs">Enter the institute ID here.</p>
+
+            <label class="block" for="company-body">Institute Full Description:</label>
+            <textarea class="block p-2 w-full text-gray-800" id="company-body" name="company-body" required>type here o</textarea>
+            <p class="mb-5 text-xs">This is requiredfor the singlepage of the institution.</p>
+
+        <button class="block bg-logo-color my-2 w-full py-2 text-black font-mono font-bold rounded-md" type="submit">Submit Application</button>
+
+    </form>
+
+    <script>
+        
+        const easyMDE = new EasyMDE({ element: document.getElementById("company-body") });
+
+        // const simplemde = new SimpleMDE({ element: document.getElementById("company-body") });
+    </script>
+    <!-- <div class="mt-10">
+        <ul>
+            <li>If you have any questions, please contact us before submitting your request. We will respond to all inquiries.</li>
+            <li>Do not submit an accreditation request unless you are certain about obtaining accreditation.</li>
+        </ul>                
+    </div>                 -->
+</div>
