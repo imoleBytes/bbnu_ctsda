@@ -3,6 +3,7 @@ package db
 import (
 	"ctsda/utils"
 	"database/sql"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -124,6 +125,22 @@ func (s *SqliteStoreProvider) GetInstitution(id string) (*utils.Company, error) 
 	return &Institute, nil
 }
 
+func (s *SqliteStoreProvider) GetInstitutionByCode(code string) (*utils.Company, error) {
+	queryIntitute := `SELECT name, id, validity, ctsda_code, contact_person, contact_person_phone FROM institutions WHERE ctsda_code = ?;`
+	row := s.Db.QueryRow(queryIntitute, code)
+
+	var Institute utils.Company
+
+	err := row.Scan(&Institute.Name, &Institute.Id, &Institute.Validity, &Institute.Code, &Institute.ContactPerson, &Institute.ContactPersonPhone)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			err = errors.New("no institute found with the ctsda_code: " + code)
+		}
+		return nil, err
+	}
+	return &Institute, nil
+}
+
 func (s *SqliteStoreProvider) CreateInstitution(data *utils.ApplicantData) error {
 	id := uuid.New().String()
 
@@ -146,6 +163,18 @@ func (s *SqliteStoreProvider) CreateInstitution(data *utils.ApplicantData) error
 		data.AnnualTrainingPrograms, data.AnnualTraineeCount, data.TotalStaff,
 		data.Website, data.SocialLinks, data.LocalDocuments,
 		data.InternationalDocuments)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+	return nil
+}
+
+func (s *SqliteStoreProvider) UpdateValidity(id string, status bool) error {
+
+	query := `UPDATE institutions SET validity = ? WHERE id = ?;`
+
+	_, err := s.Db.Exec(query, status, id)
 	if err != nil {
 		log.Println(err)
 		return err

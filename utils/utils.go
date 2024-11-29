@@ -35,8 +35,12 @@ type Institution struct {
 }
 
 type Company struct {
-	Name     string
-	Validity bool
-	ImageUrl string
-	Body     string
+	Name               string
+	Validity           bool
+	ImageUrl           string
+	Body               string
+	Id                 string
+	Code               string
+	ContactPerson      string
+	ContactPersonPhone string
 }

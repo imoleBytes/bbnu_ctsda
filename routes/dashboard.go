@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -107,7 +108,18 @@ func DashPage(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "dashFragment", companies)
 }
 
-func AdminQueryInstitute(w http.ResponseWriter, r *http.Request) {
+func ValidateQuery(w http.ResponseWriter, r *http.Request) {
+	code := r.URL.Query().Get("company-code")
+	code = strings.TrimSpace(code)
+	code = strings.ToUpper(code)
+
+	comp, err := models.GetInstitutionByCode(&db.Store, code)
+	if err != nil {
+		w.Write([]byte(err.Error()))
+		log.Println(err)
+		return
+	}
+
 	tmpl, err := template.ParseFiles("templates/dashboard/queryInstitute.html")
 	if err != nil {
 		io.WriteString(w, err.Error())
@@ -115,26 +127,22 @@ func AdminQueryInstitute(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	code := r.URL.Query().Get("company-code")
-	data := struct {
-		Name   string
-		Id     int
-		Code   string
-		Status string
-		Person string
-		Phone  string
-	}{
-		Name:   "Glad Consultancy",
-		Id:     23,
-		Code:   code,
-		Person: "John Abruzzi",
-		Status: "invalid",
-		Phone:  "0904544544",
-	}
-	tmpl.Execute(w, data)
+	tmpl.Execute(w, comp)
 }
 
 func AdminToggleValidity(w http.ResponseWriter, r *http.Request) {
+
+	id := r.URL.Query().Get("id")
+	validity := r.URL.Query().Get("validity")
+	code := r.URL.Query().Get("code")
+	code = strings.ToUpper(code)
+
+	valid, _ := strconv.ParseBool(validity)
+	valid = !valid
+
+	db.Store.UpdateValidity(id, valid)
+	comp, _ := db.Store.GetInstitutionByCode(code)
+
 	tmpl, err := template.ParseFiles("templates/dashboard/queryInstitute.html")
 	if err != nil {
 		io.WriteString(w, err.Error())
@@ -142,27 +150,20 @@ func AdminToggleValidity(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	id := r.URL.Query().Get("id")
-	validity := r.URL.Query().Get("validity")
+	// data := struct {
+	// 	Name   string
+	// 	Id     int
+	// 	Code   string
+	// 	Status string
+	// 	Person string
+	// 	Phone  string
+	// }{
+	// 	Name:   "Glad Consultancy",
+	// 	Id:     23,
+	// 	Code:   "Now this: " + id,
+	// 	Person: "John Abruzzi",
+	// 	Phone:  "0904544544",
+	// }
 
-	data := struct {
-		Name   string
-		Id     int
-		Code   string
-		Status string
-		Person string
-		Phone  string
-	}{
-		Name:   "Glad Consultancy",
-		Id:     23,
-		Code:   "Now this: " + id,
-		Person: "John Abruzzi",
-		Phone:  "0904544544",
-	}
-	if validity == "invalid" {
-		data.Status = "valid"
-	} else {
-		data.Status = "invalid"
-	}
-	tmpl.Execute(w, data)
+	tmpl.Execute(w, comp)
 }
