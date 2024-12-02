@@ -81,10 +81,15 @@ func (s *SqliteStoreProvider) GetCompanies() ([]utils.ApplicantData, error) {
 	return companies, err
 }
 
+// SELECT substr(body, 1,
+// instr(body || ' ', ' ', 50)) AS first_50_words
+// FROM your_table;
+
 // thisone talk straight with the database, here is where we should have the sql queries
 func (s *SqliteStoreProvider) GetInstitutions() ([]utils.Institution, error) {
 	// COALESCE is tohandle empty value. and supply default value if NULL
-	queryNetworks := `SELECT id, name, COALESCE(image_url, "") AS image_url, COALESCE(description, "") AS description FROM institutions;`
+	queryNetworks := `SELECT id, name, image_url, description FROM institutions;`
+
 	rows, err := s.Db.Query(queryNetworks)
 	if err != nil {
 		log.Printf("Failed to query Institutions: %v", err)
@@ -150,9 +155,9 @@ func (s *SqliteStoreProvider) CreateInstitution(data *utils.ApplicantData) error
 		contact_person_position, contact_person_phone, established_date, training_areas, 
 		certificates_issued, admission_requirements, delivery_method, annual_training_programs,
 		annual_trainee_count, total_staff, website, social_links, local_accreditation, 
-		international_accreditation
+		international_accreditation, description, image_url
 	) 
-	VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);`
+	VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, 'company_default.svg');`
 
 	_, err := s.Db.Exec(query,
 		id, data.Name, data.LegalStatus,
@@ -162,7 +167,7 @@ func (s *SqliteStoreProvider) CreateInstitution(data *utils.ApplicantData) error
 		data.CertificatesIssued, data.AdmissionRequirements, data.DeliveryMethod,
 		data.AnnualTrainingPrograms, data.AnnualTraineeCount, data.TotalStaff,
 		data.Website, data.SocialLinks, data.LocalDocuments,
-		data.InternationalDocuments)
+		data.InternationalDocuments, data.ShortDescription)
 	if err != nil {
 		log.Println(err)
 		return err
@@ -177,6 +182,18 @@ func (s *SqliteStoreProvider) UpdateValidity(id string, status bool) error {
 	_, err := s.Db.Exec(query, status, id)
 	if err != nil {
 		log.Println(err)
+		return err
+	}
+	return nil
+}
+
+func (s *SqliteStoreProvider) UpdateDescription(id, md string) error {
+	query := `UPDATE institutions SET body = ? WHERE id = ?;`
+	_, err := s.Db.Exec(query, md, id)
+
+	if err != nil {
+		println("got to error")
+		log.Fatalln(err)
 		return err
 	}
 	return nil

@@ -68,6 +68,7 @@ func SubmitApplication(w http.ResponseWriter, r *http.Request) {
 		SocialLinks:            values.Get("socials"),
 		LocalDocuments:         values.Get("local-accreditation"),
 		InternationalDocuments: values.Get("international-accreditation"),
+		ShortDescription:       values.Get("short-description"),
 	}
 
 	err := models.CreateInstitution(&db.Store, &applicant)

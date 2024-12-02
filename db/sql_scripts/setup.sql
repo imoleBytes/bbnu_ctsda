@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users(
 CREATE TABLE IF NOT EXISTS institutions(
     id VARCHAR(255) PRIMARY KEY,
     name TEXT NOT NULL,
-    image_url TEXT DEFAULT 'default_logo.jpeg',
+    image_url TEXT DEFAULT 'company_default.svg',
     description TEXT DEFAULT "",
     body TEXT DEFAULT "",
     legal_status VARCHAR(100) NOT NULL,

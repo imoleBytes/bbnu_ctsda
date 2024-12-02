@@ -5,7 +5,6 @@ import (
 	"ctsda/db"
 	"ctsda/models"
 	"ctsda/utils"
-	"fmt"
 	"html/template"
 	"io"
 	"log"
@@ -64,18 +63,10 @@ func UpdateForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func PUTUpdateForm(w http.ResponseWriter, r *http.Request) {
-	// tmpl, err := template.ParseFiles("templates/dashboard/updateForm.html")
-	// if err != nil {
-	// 	io.WriteString(w, err.Error())
-	// 	log.Println(err)
-	// 	return
-	// }
 	r.ParseForm()
 
-	// id := r.PostFormValue("company-id")
+	id := strings.TrimSpace(r.PostFormValue("company-id"))
 	markdownbody := strings.TrimSpace(r.PostFormValue("company-body"))
-
-	fmt.Print(markdownbody)
 
 	var buf bytes.Buffer
 
@@ -84,10 +75,16 @@ func PUTUpdateForm(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
+	// save markdown to database
+
+	err := models.UpdateDescription(&db.Store, id, markdownbody)
+	if err != nil {
+		log.Println(err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
 	io.WriteString(w, buf.String())
-	fmt.Println(buf.String())
-	// io.WriteString(w, fmt.Sprintf("Id: %s and Body: %s\n", id, body))
-	// tmpl.Execute(w, nil)
 }
 
 func AssignCode(w http.ResponseWriter, r *http.Request) {

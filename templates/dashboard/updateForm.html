@@ -4,16 +4,18 @@
         Once you have all the necessary information and are ready to proceed with the CTSDA accreditation process, please fill out the form below. Our team will review your submission and contact you via the email address provided.
     </p> -->
 
-    <form hx-put="/update-institute" hx-target=".content" class=" text-xl w-full md:w-4/5 m-auto border border-solid border-green-50 p-2">
-            <label class="block" for="company-id">Institute ID:</label>
-            <input class="block p-2 w-full text-gray-800" type="text" id="company-id" name="company-id" placeholder="institue ID" required>
-            <p class="mb-5 text-xs">Enter the institute ID here.</p>
+    <div class="reset-default"></div>
 
-            <label class="block" for="company-body">Institute Full Description:</label>
-            <textarea class="block p-2 w-full text-gray-800" id="company-body" name="company-body" required>type here o</textarea>
-            <p class="mb-5 text-xs">This is requiredfor the singlepage of the institution.</p>
+    <form hx-put="/update-institute" hx-target=".reset-default" class=" text-xl w-full md:w-4/5 m-auto border border-solid border-green-50 p-2">
+        <label class="block" for="company-id">Institute ID:</label>
+        <input class="block p-2 w-full text-gray-800" type="text" id="company-id" name="company-id" placeholder="institue ID" required>
+        <p class="mb-5 text-xs">Enter the institute ID here.</p>
 
-        <button class="block bg-logo-color my-2 w-full py-2 text-black font-mono font-bold rounded-md" type="submit">Submit Application</button>
+        <label class="block" for="company-body">Institute Full Description:</label>
+        <textarea class="block p-2 w-full text-gray-800" id="company-body" name="company-body" required>type here o</textarea>
+        <p class="mb-5 text-xs">This is requiredfor the singlepage of the institution.</p>
+
+    <button class="block bg-logo-color my-2 w-full py-2 text-black font-mono font-bold rounded-md" type="submit">Update</button>
 
     </form>
 

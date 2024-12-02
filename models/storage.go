@@ -10,6 +10,7 @@ type Storage interface {
 	CreateInstitution(*utils.ApplicantData) error
 	GetCompanies() ([]utils.ApplicantData, error)
 	GetInstitutionByCode(string) (*utils.Company, error)
+	UpdateDescription(string, string) error
 }
 
 func GetCompanies(store Storage) ([]utils.ApplicantData, error) {
@@ -30,5 +31,8 @@ func GetInstitutionByCode(store Storage, code string) (*utils.Company, error) {
 
 func CreateInstitution(store Storage, payload *utils.ApplicantData) error {
 	return store.CreateInstitution(payload)
+}
 
+func UpdateDescription(store Storage, id, md string) error {
+	return store.UpdateDescription(id, md)
 }

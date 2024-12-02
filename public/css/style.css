@@ -686,6 +686,10 @@ video {
   margin-right: 0.5rem;
 }
 
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -696,10 +700,6 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mr-5 {
-  margin-right: 1.25rem;
 }
 
 .block {
@@ -770,10 +770,6 @@ video {
   width: 91.666667%;
 }
 
-.w-3\/12 {
-  width: 25%;
-}
-
 .w-3\/5 {
   width: 60%;
 }
@@ -784,10 +780,6 @@ video {
 
 .w-4\/5 {
   width: 80%;
-}
-
-.w-9\/12 {
-  width: 75%;
 }
 
 .w-96 {
@@ -811,24 +803,8 @@ video {
   flex: 1 1 0%;
 }
 
-.flex-\[0_0_calc\(50\%-0\.5rem\)\] {
-  flex: 0 0 calc(50% - 0.5rem);
-}
-
 .border-collapse {
   border-collapse: collapse;
-}
-
-.transform {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.grid-flow-col {
-  grid-auto-flow: column;
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-wrap {
@@ -1267,6 +1243,11 @@ video {
   color: rgb(237 195 41 / var(--tw-text-opacity));
 }
 
+.text-red-400 {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
+}
+
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
@@ -1280,15 +1261,6 @@ video {
 .text-whitesmoke {
   --tw-text-opacity: 1;
   color: rgb(245 245 245 / var(--tw-text-opacity));
-}
-
-.text-red-400 {
-  --tw-text-opacity: 1;
-  color: rgb(248 113 113 / var(--tw-text-opacity));
-}
-
-.underline {
-  text-decoration-line: underline;
 }
 
 .opacity-95 {
@@ -1432,10 +1404,66 @@ video {
   }
 }
 
-/* #start-form label{
-    display: block;
-    color: #ffc800;
+/* this is for update form, o that the style from markdown can be properly rendered without tailwid in the way */
+
+.reset-default h1 {
+  font-size:20px;
+  font-style: bold;
+  color: brown;
+}
+
+/* .reset-default img{
+    width: 400px;
 } */
+
+.full-description{
+  font-family: monospace;
+}
+
+.full-description p img{
+  width: 60%;
+  float: left;
+  margin: 10px;
+  /* text-wrap:wrap; */
+}
+
+.full-description h1, .full-description h2, .full-description h3, .full-description h4,.full-description h5 {
+  font-style: bold;
+  color: brown;
+}
+
+.full-description blockquote{
+  background-color: gray;
+  padding: 2rem;
+  text-align: center;
+  opacity: 0.6;
+  font-family: fantasy;
+}
+
+.full-description ul{
+  list-style: disc;
+}
+
+full-description ol{
+  list-style: decimal;
+}
+
+.full-description h1 {
+  font-size: 1.5rem;
+}
+
+.full-description h2 {
+  font-size: 1.2rem;
+}
+
+.full-description h3 {
+  font-size: 1rem;
+}
+
+.full-description p{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 
 .odd\:bg-gray-100:nth-child(odd) {
   --tw-bg-opacity: 1;

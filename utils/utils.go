@@ -25,6 +25,7 @@ type ApplicantData struct {
 	InternationalDocuments string
 	Code                   string
 	Validity               bool
+	ShortDescription       string
 }
 
 type Institution struct {

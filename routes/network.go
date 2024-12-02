@@ -25,6 +25,14 @@ func Network(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	println("3")
+	data := struct {
+		Title string
+		Data  []utils.Institution
+		// Data  []storage.Institution
+	}{
+		Title: "Networks--CTSDA",
+		Data:  institutions,
+	}
 
 	// preent data to template
 	tmpl, err := template.ParseFiles("templates/base.html", "templates/network.html", "templates/header.html", "templates/footer.html")
@@ -38,14 +46,7 @@ func Network(w http.ResponseWriter, r *http.Request) {
 		log.Println("GET "+r.URL.Path+":", err)
 		return
 	}
-	data := struct {
-		Title string
-		Data  []utils.Institution
-		// Data  []storage.Institution
-	}{
-		Title: "Networks--CTSDA",
-		Data:  institutions,
-	}
+
 	err = tmpl.ExecuteTemplate(w, "base.html", data)
 	if err != nil {
 		println("5")
