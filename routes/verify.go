@@ -1,7 +1,8 @@
 package routes
 
 import (
-	"fmt"
+	"ctsda/db"
+	"ctsda/models"
 	"html/template"
 	"log"
 	"net/http"
@@ -32,9 +33,7 @@ func VerifyCert(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostVerifyCert(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("hit")
 	tmpl, err := template.ParseFiles("templates/fragments/verifyResults.html")
-	// tmpl, err := template.ParseGlob("templates/about.html")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(http.StatusText(http.StatusInternalServerError)))
@@ -51,18 +50,19 @@ func PostVerifyCert(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	code := r.PostFormValue("code")
-	code = strings.ToLower(code)
+	code = strings.ToUpper(code)
 
-	// if code == "kolo123" {
-
-	// }
-	data := IndexData{
-		Body: code,
+	company, err := models.CheckValidation(&db.Store, code)
+	if err != nil {
+		log.Println(err)
+		tmpl.Execute(w, struct {
+			Validity bool
+			Code     string
+		}{Validity: false, Code: code})
+		return
 	}
 
-	fmt.Println("code is: " + code)
-	tmpl.Execute(w, data)
-	// tmpl.ExecuteTemplate(w, "base.html", data)
+	tmpl.Execute(w, company)
 }
 
 type IndexData struct {

@@ -146,6 +146,22 @@ func (s *SqliteStoreProvider) GetInstitutionByCode(code string) (*utils.Company,
 	return &Institute, nil
 }
 
+func (s *SqliteStoreProvider) CheckValidation(code string) (*utils.Company, error) {
+	queryIntitute := `SELECT name, validity, ctsda_code, website, country, training_areas FROM institutions WHERE ctsda_code = ? AND validity = 1;`
+	row := s.Db.QueryRow(queryIntitute, code)
+
+	var Institute utils.Company
+
+	err := row.Scan(&Institute.Name, &Institute.Validity, &Institute.Code, &Institute.Website, &Institute.Country, &Institute.TrainingAreas)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			err = errors.New("no institute found with the ctsda_code: " + code)
+		}
+		return nil, err
+	}
+	return &Institute, nil
+}
+
 func (s *SqliteStoreProvider) CreateInstitution(data *utils.ApplicantData) error {
 	id := uuid.New().String()
 

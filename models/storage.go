@@ -11,6 +11,11 @@ type Storage interface {
 	GetCompanies() ([]utils.ApplicantData, error)
 	GetInstitutionByCode(string) (*utils.Company, error)
 	UpdateDescription(string, string) error
+	CheckValidation(string) (*utils.Company, error)
+}
+
+func CheckValidation(store Storage, code string) (*utils.Company, error) {
+	return store.CheckValidation(code)
 }
 
 func GetCompanies(store Storage) ([]utils.ApplicantData, error) {

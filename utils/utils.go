@@ -44,4 +44,7 @@ type Company struct {
 	Code               string
 	ContactPerson      string
 	ContactPersonPhone string
+	Website            string
+	Country            string
+	TrainingAreas      string
 }

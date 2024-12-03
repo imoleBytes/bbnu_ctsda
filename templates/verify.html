@@ -15,7 +15,7 @@
 
             <!-- <form class="p-5 w-max m-auto" action="/verify-cert" method="post"> -->
             <form class="p-5 w-max m-auto" hx-post="/verify-cert" hx-target="#result">
-                <input class="uppercase text-center px-5 py-2 font-black text-black" type="text" name="code" id="verify" placeholder="Verification Code" value="{{.}}">
+                <input autocomplete="off" class="uppercase text-center px-5 py-2 font-black text-black" type="text" name="code" id="verify" placeholder="Verification Code" value="{{.}}" required>
             </form>
             <div id="result"></div>
         </div>
