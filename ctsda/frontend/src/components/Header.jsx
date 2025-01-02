@@ -98,7 +98,7 @@ const Header = () => {
                     </Link>
                     </li>
                     <li>
-                    <Link to="/network" className="hover:text-primary">
+                    <Link to="/networks" className="hover:text-primary">
                         Network
                     </Link>
                     </li>

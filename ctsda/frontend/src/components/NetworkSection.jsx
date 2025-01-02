@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 export default function NetworkSection() {
   const [logos, setLogos] = useState([]);
@@ -44,7 +45,9 @@ export default function NetworkSection() {
           <h3 className="text-xl font-bold mb-4">Want to be part of our network?</h3>
           <p className="mb-6">Start the process here!</p>
           <div className="flex justify-center gap-4">
+            <Link to="/application">
             <Button>APPLY NOW</Button>
+            </Link>
             <Button variant="outline">READ MORE</Button>
           </div>
         </div>

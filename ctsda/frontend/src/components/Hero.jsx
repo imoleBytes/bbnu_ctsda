@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import QuickLinks from './QuickLinks'
+import { Link } from 'react-router-dom'
 
 export default function Hero() {
   return (
@@ -17,11 +18,14 @@ export default function Hero() {
               By gaining CTSDA accreditation, you can strengthen your professional skills, enhance your reputation, and bolster your professional practice.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
+            <Link to="/application">
               <Button 
                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black w-full sm:w-auto"
               >
                 START ACCREDITATION
+                
               </Button>
+              </Link>
               <Button 
                 variant="outline" 
                 className="bg-white text-black hover:bg-transparent hover:text-white w-full sm:w-auto"
