@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --radius: 0.5rem
+  }
+}
+
+/* Add this to your global styles or in the component's CSS module */
+
+@keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .animate-marquee {
+    display: flex;
+    animation: marquee 15s linear infinite;
+    /* Adjust the speed by modifying the 15s (duration) */
+    animation-timing-function: linear;
+  }
+  
