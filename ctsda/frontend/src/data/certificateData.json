@@ -1,0 +1,31 @@
+[
+    {
+      "certificateNumber": "CTSDA-123456-AB",
+      "instituteName": "Global Education Institute",
+      "program": "Bachelor of Science in Computer Science",
+      "status": "Accredited",
+      "validUntil": "2025-12-31"
+    },
+    {
+      "certificateNumber": "CTSDA-789012-CD",
+      "instituteName": "Advanced Learning Academy",
+      "program": "Master of Business Administration",
+      "status": "Accredited",
+      "validUntil": "2026-06-30"
+    },
+    {
+      "certificateNumber": "CTSDA-345678-EF",
+      "instituteName": "Tech Training Center",
+      "status": "Expired",
+      "expiredOn": "2022-12-31"
+    },
+    {
+      "certificateNumber": "CTSDA-901234-GH",
+      "instituteName": "Health Sciences University",
+      "program": "Bachelor of Nursing",
+      "status": "Accredited",
+      "validUntil": "2024-09-30"
+    }
+  ]
+  
+  

@@ -9,6 +9,8 @@ import Contact from './pages/Contact';
 import InstituteDetail from './pages/InstituteDetail';
 import StartApplication from './pages/StartApplication';
 import MainApplicationForm from './pages/MainApplicationForm';
+import VerifyCertificate from './pages/VerifyCertificate';
+import Dashboard from './pages/Dashboard';
 // Import other pages as needed
 
 function App() {
@@ -26,6 +28,10 @@ function App() {
         <Route path="/institute/:id" element={<InstituteDetail />} />
         <Route path="/start-application" element={<StartApplication />} />
         <Route path="/apply" element={<MainApplicationForm />} />
+        <Route path="/verify" element={<VerifyCertificate />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+
 
 
 

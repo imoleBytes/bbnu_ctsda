@@ -26,12 +26,14 @@ export default function Hero() {
                 
               </Button>
               </Link>
+              <Link to="/verify">
               <Button 
                 variant="outline" 
                 className="bg-white text-black hover:bg-transparent hover:text-white w-full sm:w-auto"
               >
                 VERIFY CERTIFICATE
               </Button>
+              </Link>
             </div>
           </div>
           <div className="lg:w-1/3">

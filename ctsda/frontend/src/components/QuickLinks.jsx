@@ -10,7 +10,7 @@ export default function QuickLinks() {
           <Link to="/verify">Verify ACTD Certificate</Link>
         </Button>
         <Button asChild variant="outline" className="w-full text-black border-white hover:bg-gray-300 hover:text-black">
-          <Link to="/network">ACTD Accredited Network 2024</Link>
+          <Link to="/networks">ACTD Accredited Network 2025</Link>
         </Button>
         <Button asChild variant="outline" className="w-full text-black border-white hover:bg-gray-300 hover:text-black">
           <Link to="/search">Search within ACTD network</Link>

@@ -48,10 +48,12 @@ export default function NetworkSection() {
           <h3 className="text-xl font-bold mb-4">Want to be part of our network?</h3>
           <p className="mb-6">Start the process here!</p>
           <div className="flex justify-center gap-4">
-            <Link to="/application">
+            <Link to="/start-application">
             <Button>APPLY NOW</Button>
             </Link>
+            <Link to="/start-application">
             <Button variant="outline">READ MORE</Button>
+            </Link>
           </div>
         </div>
       </div>

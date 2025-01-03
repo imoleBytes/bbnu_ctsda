@@ -49,6 +49,9 @@ export default function TrainingDetails({ data, updateData }) {
                 <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>
+            <p className="text-sm text-gray-500 mt-1">
+              Select the category that best describes your institution
+            </p>
           </div>
           
           <div>
@@ -57,9 +60,12 @@ export default function TrainingDetails({ data, updateData }) {
               id="mainTrainingAreas"
               value={data.mainTrainingAreas.join('\n')}
               onChange={(e) => handleChange('mainTrainingAreas', e.target.value.split('\n'))}
-              placeholder="Enter main training areas (one per line)"
+              placeholder="e.g.&#10;Business Management&#10;Information Technology&#10;Healthcare Administration"
               rows={4}
             />
+            <p className="text-sm text-gray-500 mt-1">
+              List your main areas of training/education. Enter one area per line.
+            </p>
           </div>
           
           <div>
@@ -68,9 +74,12 @@ export default function TrainingDetails({ data, updateData }) {
               id="certificateTypes"
               value={data.certificateTypes.join('\n')}
               onChange={(e) => handleChange('certificateTypes', e.target.value.split('\n'))}
-              placeholder="Enter types of certificates (one per line)"
+              placeholder="e.g.&#10;Diploma in Business Administration&#10;Certificate in Project Management&#10;Advanced Certificate in IT"
               rows={4}
             />
+            <p className="text-sm text-gray-500 mt-1">
+              List all types of certificates, diplomas, or degrees your institution awards. Enter one per line.
+            </p>
           </div>
           
           <div>
@@ -87,6 +96,9 @@ export default function TrainingDetails({ data, updateData }) {
                 </div>
               ))}
             </div>
+            <p className="text-sm text-gray-500 mt-1">
+              Select all methods used to deliver your training programs
+            </p>
           </div>
           
           <div>
@@ -96,8 +108,11 @@ export default function TrainingDetails({ data, updateData }) {
               type="number"
               value={data.annualTrainingPrograms}
               onChange={(e) => handleChange('annualTrainingPrograms', e.target.value)}
-              placeholder="Enter number of annual training programs"
+              placeholder="e.g., 12"
             />
+            <p className="text-sm text-gray-500 mt-1">
+              Enter the total number of training programs conducted in a year
+            </p>
           </div>
         </div>
       </div>

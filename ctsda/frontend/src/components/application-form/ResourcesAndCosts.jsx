@@ -29,8 +29,11 @@ export default function ResourcesAndCosts({ data, updateData }) {
               type="number"
               value={data.totalStaff}
               onChange={(e) => handleChange('totalStaff', e.target.value)}
-              placeholder="Enter total number of staff"
+              placeholder="e.g., 50"
             />
+            <p className="text-sm text-gray-500 mt-1">
+              Include all full-time and part-time staff members
+            </p>
           </div>
           
           <div>
@@ -40,8 +43,11 @@ export default function ResourcesAndCosts({ data, updateData }) {
               type="number"
               value={data.annualCosts}
               onChange={(e) => handleChange('annualCosts', e.target.value)}
-              placeholder="Enter annual private costs"
+              placeholder="e.g., 100000"
             />
+            <p className="text-sm text-gray-500 mt-1">
+              Enter your institution's total annual operating costs in USD
+            </p>
           </div>
           
           <div className="space-y-4">
@@ -53,8 +59,11 @@ export default function ResourcesAndCosts({ data, updateData }) {
                 id="website"
                 value={data.socialMediaLinks.website}
                 onChange={(e) => handleSocialMediaChange('website', e.target.value)}
-                placeholder="Enter website URL"
+                placeholder="e.g., https://www.yourinstitution.com"
               />
+              <p className="text-sm text-gray-500 mt-1">
+                Enter the full URL including https://
+              </p>
             </div>
             
             <div>
@@ -63,7 +72,7 @@ export default function ResourcesAndCosts({ data, updateData }) {
                 id="facebook"
                 value={data.socialMediaLinks.facebook}
                 onChange={(e) => handleSocialMediaChange('facebook', e.target.value)}
-                placeholder="Enter Facebook URL"
+                placeholder="e.g., https://facebook.com/yourinstitution"
               />
             </div>
             
@@ -73,7 +82,7 @@ export default function ResourcesAndCosts({ data, updateData }) {
                 id="twitter"
                 value={data.socialMediaLinks.twitter}
                 onChange={(e) => handleSocialMediaChange('twitter', e.target.value)}
-                placeholder="Enter Twitter URL"
+                placeholder="e.g., https://twitter.com/yourinstitution"
               />
             </div>
             
@@ -83,7 +92,7 @@ export default function ResourcesAndCosts({ data, updateData }) {
                 id="linkedin"
                 value={data.socialMediaLinks.linkedin}
                 onChange={(e) => handleSocialMediaChange('linkedin', e.target.value)}
-                placeholder="Enter LinkedIn URL"
+                placeholder="e.g., https://linkedin.com/company/yourinstitution"
               />
             </div>
           </div>

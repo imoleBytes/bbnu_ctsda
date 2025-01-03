@@ -87,19 +87,19 @@ const Header = () => {
                         Contact Us
                     </Link>
                     </li>
-                    {/* <li>
+                    <li>
                     <Link to="/dashboard" className="hover:text-primary">
                         Dashboard
                     </Link>
-                    </li> */}
+                    </li>
                     <li>
-                    <Link to="/application" className="hover:text-primary">
+                    <Link to="/apply" className="hover:text-primary">
                         Application
                     </Link>
                     </li>
                     <li>
                     <Link to="/networks" className="hover:text-primary">
-                        Network
+                        Networks
                     </Link>
                     </li>
                 </ul>
