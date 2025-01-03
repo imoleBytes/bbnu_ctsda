@@ -7,6 +7,8 @@ import Services from './pages/Services';
 import Networks from './pages/Networks';
 import Contact from './pages/Contact';
 import InstituteDetail from './pages/InstituteDetail';
+import StartApplication from './pages/StartApplication';
+import MainApplicationForm from './pages/MainApplicationForm';
 // Import other pages as needed
 
 function App() {
@@ -22,6 +24,10 @@ function App() {
 
         <Route path="/networks" element={<Networks />} />
         <Route path="/institute/:id" element={<InstituteDetail />} />
+        <Route path="/start-application" element={<StartApplication />} />
+        <Route path="/apply" element={<MainApplicationForm />} />
+
+
 
 
             {/* Add other routes as needed */}

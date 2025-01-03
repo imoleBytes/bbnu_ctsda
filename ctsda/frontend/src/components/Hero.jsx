@@ -18,7 +18,7 @@ export default function Hero() {
               By gaining CTSDA accreditation, you can strengthen your professional skills, enhance your reputation, and bolster your professional practice.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-            <Link to="/application">
+            <Link to="/start-application">
               <Button 
                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black w-full sm:w-auto"
               >
