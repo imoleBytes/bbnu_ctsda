@@ -1,0 +1,9 @@
+{
+    "logos": [
+        { "id": 1, "url": "/img/logos/3m.svg", "alt": "Logo 1" },
+        { "id": 2, "url": "/img/logos/barstool-store.svg", "alt": "Logo 2" },
+        { "id": 3, "url": "/img/logos/budweiser.svg", "alt": "Logo 3" },
+        { "id": 4, "url": "/img/logos/buzzfeed.svg", "alt": "Logo 4" },
+        { "id": 5, "url": "/img/logos/menshealth.svg", "alt": "Logo 5" }
+      ]
+}

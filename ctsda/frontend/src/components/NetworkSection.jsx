@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
+import data from '../data.json'; // Importing the local JSON file
+
+
 export default function NetworkSection() {
   const [logos, setLogos] = useState([]);
 
   // Static logos list
   useEffect(() => {
-    const staticLogos = [
-        { id: 1, url: '/img/logos/3m.svg', alt: 'Logo 1' },
-        { id: 2, url: '/img/logos/barstool-store.svg', alt: 'Logo 2' },
-        { id: 3, url: '/img/logos/budweiser.svg', alt: 'Logo 3' },
-        { id: 4, url: '/img/logos/buzzfeed.svg', alt: 'Logo 4' },
-        { id: 5, url: '/img/logos/menshealth.svg', alt: 'Logo 5' },
-      ];    
+    // const staticLogos = [
+    //     { id: 1, url: '/img/logos/3m.svg', alt: 'Logo 1' },
+    //     { id: 2, url: '/img/logos/barstool-store.svg', alt: 'Logo 2' },
+    //     { id: 3, url: '/img/logos/budweiser.svg', alt: 'Logo 3' },
+    //     { id: 4, url: '/img/logos/buzzfeed.svg', alt: 'Logo 4' },
+    //     { id: 5, url: '/img/logos/menshealth.svg', alt: 'Logo 5' },
+    //   ];    
     // const staticLogos = [
     //   { id: 1, url: '/images/logo1.png', alt: 'Logo 1' },
     //   { id: 2, url: '/images/logo2.png', alt: 'Logo 2' },
@@ -21,7 +24,7 @@ export default function NetworkSection() {
     //   { id: 4, url: '/images/logo4.png', alt: 'Logo 4' },
     //   { id: 5, url: '/images/logo5.png', alt: 'Logo 5' },
     // ];
-    setLogos(staticLogos);
+    setLogos(data.logos);
   }, []);
 
   return (

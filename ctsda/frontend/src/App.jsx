@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Services from './pages/Services';
 import Networks from './pages/Networks';
 import Contact from './pages/Contact';
+import InstituteDetail from './pages/InstituteDetail';
 // Import other pages as needed
 
 function App() {
@@ -17,8 +18,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/networks" element={<Networks />} />
         <Route path="/contact" element={<Contact />} />
+
+        <Route path="/networks" element={<Networks />} />
+        <Route path="/institute/:id" element={<InstituteDetail />} />
+
+
             {/* Add other routes as needed */}
         </Routes>
         <Footer />
